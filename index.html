@@ -3,88 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Team Dub Labs — Science in progress</title>
-  <meta name="description" content="Team Dub Labs is an independent software laboratory. Open-source experiments in lab automation and self-hosted tooling.">
+  <title>Team Dub Labs — Science, in progress</title>
+  <meta name="description" content="Team Dub Labs is an independent software laboratory. Experiments in lab automation and self-hosted tooling, with the notes published.">
   <meta property="og:title" content="Team Dub Labs">
-  <meta property="og:description" content="An independent software laboratory. Science in progress.">
+  <meta property="og:description" content="An independent software laboratory. Science, in progress.">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317191d'/%3E%3Cpath d='M4 9 L10 23 L16 12 L22 23 L28 9' fill='none' stroke='%23ff6b1a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta property="og:url" content="https://teamdub.com">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181c'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='%23ff6a1f' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="scanlines" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="wordmark" href="/">
-      <svg class="wordmark-glyph" viewBox="0 0 32 20" aria-hidden="true">
-        <path d="M2 3 L9 17 L16 6 L23 17 L30 3" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span>Team Dub Labs</span>
-    </a>
-    <nav>
-      <a class="topbar-link" href="https://github.com/teamdublabs" rel="noopener">GitHub&nbsp;&#8599;</a>
-    </nav>
+  <header class="statusbar">
+    <span class="sb-id"><span class="led"></span>teamdub.labs</span>
+    <span class="sb-meta">
+      <span>SYS&nbsp;NOMINAL</span>
+      <span class="sb-dot" aria-hidden="true">&middot;</span>
+      <span>EST&nbsp;2006</span>
+      <span class="sb-dot" aria-hidden="true">&middot;</span>
+      <a href="https://github.com/teamdublabs" rel="noopener">GITHUB&nbsp;&#8599;</a>
+    </span>
   </header>
 
   <main>
     <section class="hero">
-      <canvas id="scope" aria-hidden="true"></canvas>
-      <div class="hero-inner">
-        <p class="eyebrow">An independent software laboratory</p>
-        <h1>Science in<br>progress<span class="tick">.</span></h1>
+      <div class="hero-copy">
+        <p class="eyebrow">Team&nbsp;Dub&nbsp;Labs <span class="eyebrow-rule" aria-hidden="true"></span> Independent&nbsp;software&nbsp;lab</p>
+        <h1>Science,<br>in&nbsp;progress<span class="caret-static">_</span></h1>
         <p class="lede">
           We run experiments in lab automation and self-hosted tooling,
-          open-source the results, and keep notes when things explode.
+          then publish the notes — methods, results, and the failures
+          that taught us something.
         </p>
-        <div class="hero-actions">
-          <a class="btn" href="https://github.com/teamdublabs" rel="noopener">Follow along on GitHub&nbsp;&#8599;</a>
-        </div>
+        <a class="btn" href="https://github.com/teamdublabs" rel="noopener">Enter the workshop&nbsp;&#8599;</a>
       </div>
-      <ul class="bezel" aria-hidden="true">
-        <li>CH-W &middot; 2 V/DIV</li>
-        <li>TRIG: CURIOSITY</li>
-        <li>SWEEP: CONTINUOUS</li>
-        <li>EST. 2006</li>
-      </ul>
+
+      <aside class="terminal" aria-label="System log">
+        <div class="term-bar">
+          <span class="term-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="term-title">session.log</span>
+        </div>
+        <pre class="term-body" id="termBody" aria-hidden="true"></pre>
+        <p class="term-fallback">Boot sequence: 2 experiments online, status nominal.</p>
+      </aside>
     </section>
 
-    <section class="bench" aria-labelledby="bench-title">
-      <h2 class="section-label" id="bench-title">On the bench</h2>
-      <div class="cards">
-        <article class="card">
-          <header class="card-head">
-            <span class="exp-id">EXP-001</span>
-            <span class="status status-active"><span class="dot"></span>In development</span>
-          </header>
-          <h3>Dubdeck</h3>
-          <p>
-            A desktop-style control deck for virtual lab enclaves — start, stop,
-            snapshot, and gate egress for a fleet of lab VMs from one screen.
-          </p>
-        </article>
-        <article class="card">
-          <header class="card-head">
-            <span class="exp-id">EXP-002</span>
-            <span class="status"><span class="dot"></span>Queued</span>
-          </header>
-          <h3>Field notes</h3>
-          <p>
-            The lab notebook, made public. Write-ups of what we built, what
-            broke, and why — failures included.
-          </p>
-        </article>
-      </div>
+    <section class="registry" aria-labelledby="reg-title">
+      <h2 class="section-label" id="reg-title"><span>Experiment registry</span></h2>
+      <ol class="reg-table">
+        <li class="reg-row reg-head" aria-hidden="true">
+          <span>ID</span><span>Experiment</span><span>Domain</span><span>Status</span>
+        </li>
+        <li class="reg-row">
+          <span class="reg-id">EXP-001</span>
+          <span class="reg-name">Dubdeck</span>
+          <span class="reg-domain">lab control</span>
+          <span class="reg-status is-active"><span class="dot"></span>Active</span>
+        </li>
+        <li class="reg-row">
+          <span class="reg-id">EXP-002</span>
+          <span class="reg-name">Field notes</span>
+          <span class="reg-domain">writing</span>
+          <span class="reg-status"><span class="dot"></span>Queued</span>
+        </li>
+      </ol>
+      <p class="reg-foot">2&nbsp;records &middot; more instruments coming online</p>
     </section>
   </main>
 
   <footer class="foot">
-    <span>&copy; 2026 Team Dub Labs &middot; Est. 2006</span>
-    <span class="foot-sep" aria-hidden="true">&middot;</span>
-    <span>Results may vary</span>
-    <span class="foot-sep" aria-hidden="true">&middot;</span>
-    <a href="https://teamdub.com" rel="noopener">teamdub.com</a>
+    <span class="foot-id"><span class="led"></span>teamdub.com</span>
+    <span class="foot-meta">
+      <span>&copy;&nbsp;2026 &middot; est.&nbsp;2006</span>
+      <a href="https://github.com/teamdublabs" rel="noopener">github.com/teamdublabs</a>
+    </span>
   </footer>
 
   <script src="main.js"></script>
