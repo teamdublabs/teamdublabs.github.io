@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Dub Labs — Science in progress</title>
+  <meta name="description" content="Team Dub Labs is an independent software laboratory. Open-source experiments in lab automation and self-hosted tooling.">
+  <meta property="og:title" content="Team Dub Labs">
+  <meta property="og:description" content="An independent software laboratory. Science in progress.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317191d'/%3E%3Cpath d='M4 9 L10 23 L16 12 L22 23 L28 9' fill='none' stroke='%23ff6b1a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="wordmark" href="/">
+      <svg class="wordmark-glyph" viewBox="0 0 32 20" aria-hidden="true">
+        <path d="M2 3 L9 17 L16 6 L23 17 L30 3" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Team Dub Labs</span>
+    </a>
+    <nav>
+      <a class="topbar-link" href="https://github.com/teamdublabs" rel="noopener">GitHub&nbsp;&#8599;</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <canvas id="scope" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="eyebrow">An independent software laboratory</p>
+        <h1>Science in<br>progress<span class="tick">.</span></h1>
+        <p class="lede">
+          We run experiments in lab automation and self-hosted tooling,
+          open-source the results, and keep notes when things explode.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="https://github.com/teamdublabs" rel="noopener">Follow along on GitHub&nbsp;&#8599;</a>
+        </div>
+      </div>
+      <ul class="bezel" aria-hidden="true">
+        <li>CH-W &middot; 2 V/DIV</li>
+        <li>TRIG: CURIOSITY</li>
+        <li>SWEEP: CONTINUOUS</li>
+        <li>EST. 2006</li>
+      </ul>
+    </section>
+
+    <section class="bench" aria-labelledby="bench-title">
+      <h2 class="section-label" id="bench-title">On the bench</h2>
+      <div class="cards">
+        <article class="card">
+          <header class="card-head">
+            <span class="exp-id">EXP-001</span>
+            <span class="status status-active"><span class="dot"></span>In development</span>
+          </header>
+          <h3>Dubdeck</h3>
+          <p>
+            A desktop-style control deck for virtual lab enclaves — start, stop,
+            snapshot, and gate egress for a fleet of lab VMs from one screen.
+          </p>
+        </article>
+        <article class="card">
+          <header class="card-head">
+            <span class="exp-id">EXP-002</span>
+            <span class="status"><span class="dot"></span>Queued</span>
+          </header>
+          <h3>Field notes</h3>
+          <p>
+            The lab notebook, made public. Write-ups of what we built, what
+            broke, and why — failures included.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>&copy; 2026 Team Dub Labs &middot; Est. 2006</span>
+    <span class="foot-sep" aria-hidden="true">&middot;</span>
+    <span>Results may vary</span>
+    <span class="foot-sep" aria-hidden="true">&middot;</span>
+    <a href="https://teamdub.com" rel="noopener">teamdub.com</a>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
