@@ -17,6 +17,13 @@
   @keyframes scanSweep { 0% { transform: translateY(-180px) } 100% { transform: translateY(100vh) } }
   @keyframes ledPulse { 0%, 100% { opacity: 1 } 50% { opacity: .3 } }
   .cta:hover { background: var(--accent, #ff6a1f); color: #0d0f12 !important; box-shadow: 0 0 26px rgba(255,106,31,0.4); }
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding-top: 56px !important; }
+    .logbox { display: none !important; }
+    .eyebrow { flex-wrap: wrap !important; gap: 6px !important; font-size: 10px !important; letter-spacing: 0.1em !important; overflow-wrap: anywhere !important; }
+    .eyebrow > span { display: none !important; }
+    .registry div[style*="110px minmax"] { grid-template-columns: 54px minmax(0, 1fr) auto !important; gap: 12px !important; }
+  }
 </style>
 </head>
 <body>
@@ -45,9 +52,9 @@
       </span>
     </header>
 
-    <section style="display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr); gap: 52px; align-items: center; padding: 76px 0 64px;">
+    <section class="hero" style="display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr); gap: 52px; align-items: center; padding: 76px 0 64px;">
       <div>
-        <p style="display: inline-flex; align-items: center; gap: 12px; margin: 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #9aa0a6;">
+        <p class="eyebrow" style="display: inline-flex; align-items: center; gap: 12px; margin: 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #9aa0a6;">
           <span style="width: 28px; height: 1px; background: var(--accent, #ff6a1f);"></span>
           CS&nbsp;&middot;&nbsp;ML&nbsp;&middot;&nbsp;AI&nbsp;&middot;&nbsp;SIGINT&nbsp;&middot;&nbsp;InfoSEC&nbsp;&middot;&nbsp;OpSEC
           <span style="width: 28px; height: 1px; background: var(--accent, #ff6a1f);"></span>
@@ -59,7 +66,7 @@
         <a class="cta" href="https://github.com/teamdublabs" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border: 1px solid var(--accent, #ff6a1f); color: var(--accent, #ff6a1f); text-decoration: none; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; transition: background .18s, color .18s, box-shadow .18s;">Enter&nbsp;the&nbsp;workshop&nbsp;&#8599;</a>
       </div>
 
-      <aside style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(7,8,10,0.72); overflow: hidden; box-shadow: 0 28px 64px rgba(0,0,0,0.55), inset 0 0 70px rgba(255,106,31,0.03); backdrop-filter: blur(2px);">
+      <aside class="logbox" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(7,8,10,0.72); overflow: hidden; box-shadow: 0 28px 64px rgba(0,0,0,0.55), inset 0 0 70px rgba(255,106,31,0.03); backdrop-filter: blur(2px);">
         <div style="display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
           <span style="display: inline-flex; gap: 6px;">
             <i style="display: block; width: 11px; height: 11px; border-radius: 50%; background: #ff5f57;"></i>
@@ -75,7 +82,7 @@
       </aside>
     </section>
 
-    <section style="padding: 8px 0 76px;">
+    <section class="registry" style="padding: 8px 0 76px;">
       <h2 style="display: flex; align-items: center; gap: 18px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.2em; color: #9aa0a6; font-weight: 600; margin: 0 0 20px;">
         <span>Experiment&nbsp;registry</span>
         <span style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></span>
