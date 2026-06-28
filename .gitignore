@@ -1,1 +1,4 @@
 .DS_Store
+
+# Local editor/agent config — never publish
+.claude/

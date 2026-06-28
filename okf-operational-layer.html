@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond the Format: The Operational Layer OKF Leaves Out — Team Dub Labs</title>
+<meta name="description" content="The hard part of an AI knowledge base isn't writing it down — it's keeping it true. The operational layer OKF deliberately leaves out, primitive by primitive.">
+<meta property="og:title" content="Beyond the Format: The Operational Layer OKF Leaves Out">
+<meta property="og:description" content="The hard part of an AI knowledge base isn't writing it down — it's keeping it true.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://teamdub.com/okf-operational-layer.html">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://teamdub.com/okf-operational-layer.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:#0d0f12;}
+  ::selection{background:rgba(255,106,31,0.3);color:#fff;}
+  @keyframes ledPulse{0%,100%{opacity:1}50%{opacity:.3}}
+  body{color:#c8c6bf;font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased;}
+  .bg-grid{pointer-events:none;position:fixed;inset:0;z-index:0;background-image:linear-gradient(to right, rgba(255,106,31,0.10) 1px, transparent 1px),linear-gradient(to bottom, rgba(255,106,31,0.10) 1px, transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(120% 70% at 50% -8%, #000 22%, transparent 72%);mask-image:radial-gradient(120% 70% at 50% -8%, #000 22%, transparent 72%);}
+  .bg-vignette{pointer-events:none;position:fixed;inset:0;z-index:0;background:radial-gradient(120% 100% at 50% 30%, transparent 60%, rgba(0,0,0,0.5) 100%);}
+  .shell{position:relative;z-index:1;background:radial-gradient(125% 70% at 50% -10%, #1b1f25 0%, #0d0f12 52%);min-height:100vh;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 28px;}
+
+  header.site{border-bottom:1px solid rgba(255,255,255,0.08);}
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#9aa0a6;}
+  .brand{display:inline-flex;align-items:center;gap:9px;color:#e8e6e0;text-decoration:none;}
+  .brand .led{width:8px;height:8px;border-radius:50%;background:#ff6a1f;box-shadow:0 0 9px #ff6a1f;animation:ledPulse 2.4s ease-in-out infinite;}
+  .nav a.back{color:#ff6a1f;text-decoration:none;}
+  .nav a.back:hover{color:#e8e6e0;}
+
+  article{padding:54px 0 24px;}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#9aa0a6;margin:0 0 18px;display:inline-flex;align-items:center;gap:10px;}
+  .kicker .ln{width:26px;height:1px;background:#ff6a1f;}
+  h1{font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1.05;letter-spacing:-0.03em;color:#f3f1eb;margin:0 0 18px;text-shadow:0 0 26px rgba(255,106,31,0.18);}
+  .dek{font-size:19px;line-height:1.5;color:#c0beb7;font-style:italic;margin:0 0 14px;}
+  .byline{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;color:#6b7077;margin:0 0 6px;}
+  .byline a{color:#9aa0a6;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);}
+  hr{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:36px 0;}
+  article h2{font-weight:600;font-size:25px;letter-spacing:-0.02em;color:#f3f1eb;margin:46px 0 14px;line-height:1.2;}
+  article p{font-size:17px;margin:0 0 20px;color:#c8c6bf;}
+  article strong{color:#ece9e1;font-weight:600;}
+  article em{color:#c0beb7;}
+  article a{color:#ff6a1f;text-decoration:none;border-bottom:1px solid rgba(255,106,31,0.4);}
+  article a:hover{border-bottom-color:#ff6a1f;}
+  article ul{margin:0 0 22px;padding-left:0;list-style:none;}
+  article ul li{position:relative;padding-left:26px;margin:0 0 11px;font-size:17px;color:#c8c6bf;}
+  article ul li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:1px;background:#ff6a1f;}
+  .prim{border-left:2px solid rgba(255,106,31,0.35);padding-left:20px;margin:0 0 18px;}
+  .prim p{margin:0;}
+  .about{border-top:1px solid rgba(255,255,255,0.1);margin-top:44px;padding:30px 0 10px;}
+  .about h3{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa0a6;margin:0 0 14px;}
+  .about p{font-size:16px;color:#9aa0a6;}
+  .cta-row{display:flex;gap:13px;flex-wrap:wrap;margin:24px 0 6px;}
+  .cta{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border:1px solid #ff6a1f;color:#ff6a1f;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;border-radius:0;transition:background .18s,color .18s,box-shadow .18s;}
+  .cta:hover{background:#ff6a1f;color:#0d0f12;box-shadow:0 0 26px rgba(255,106,31,0.4);}
+  .cta.secondary{border-color:rgba(255,255,255,0.18);color:#e8e6e0;}
+  .cta.secondary:hover{background:transparent;border-color:#e8e6e0;box-shadow:none;}
+  footer.site{border-top:1px solid rgba(255,255,255,0.08);padding:22px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b7077;letter-spacing:0.06em;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  footer.site a{color:#9aa0a6;text-decoration:none;}
+  .lic{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b7077;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-vignette" aria-hidden="true"></div>
+
+<div class="shell">
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="./index.html"><span class="led"></span>teamdub.labs&nbsp;<span style="color:#6b7077;">ltd</span></a>
+      <a class="back" href="./index.html#lab">&#8592;&nbsp;Back to the lab</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <article>
+      <p class="kicker"><span class="ln"></span>Field notes · EXP-003</p>
+      <h1>Beyond the Format: The Operational Layer OKF Leaves Out</h1>
+      <p class="dek">The hard part of an AI knowledge base isn't writing it down — it's keeping it true.</p>
+      <p class="byline">by Team Dub Labs · <a href="https://teamdub.com">teamdub.com</a></p>
+
+      <hr>
+
+      <h2>A format is a snapshot. Knowledge is a process.</h2>
+      <p>In June 2026, Google Cloud published the <strong>Open Knowledge Format (OKF)</strong> — a deliberately small, open spec for writing down what an organization knows as plain Markdown files with a little YAML frontmatter, so AI agents can read it directly. It's a good standard: vendor-neutral, Apache-2.0, no runtime, no SDK. And it formalizes a pattern many of us were already building toward — Andrej Karpathy sketched the "LLM wiki" idea, a small community shipped implementations through the spring of 2026, and OKF gave the result a name and a contract.</p>
+      <p>But there's a quiet assumption in every "just put your knowledge in OKF" walkthrough: that writing it down is the hard part.</p>
+      <p>It isn't. The hard part is everything <em>after</em> the first commit.</p>
+      <p>The day you finish authoring your OKF bundle is the day it starts to rot. A price changes, a runbook goes stale, a new decision quietly contradicts an old one — and nobody updates the file. Six weeks later, your tidy, standards-compliant knowledge base is confidently feeding your agents things that are no longer true.</p>
+      <p>OKF gives your knowledge a <strong>body</strong>. This piece is about what it deliberately leaves out: the <strong>metabolism</strong>.</p>
+
+      <h2>What OKF is — and what it isn't</h2>
+      <p>The gap is by design, so it's worth being precise.</p>
+      <p>OKF specifies a <em>format</em>: a directory of Markdown concept files, one required frontmatter field (<code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">type</code>), a few optional ones (<code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">title</code>, <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">description</code>, <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">resource</code>, <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">tags</code>, <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">timestamp</code>), two reserved files (<code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">index.md</code>, <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">log.md</code>), and plain Markdown links to wire it all into a graph. That's essentially it — and the minimalism is the point. A standard that's easy to adopt and can't lock you in is exactly what a standard should be.</p>
+      <p>But a format can't tell you:</p>
+      <ul>
+        <li>How new knowledge <strong>gets in</strong>.</li>
+        <li>How it's <strong>classified</strong> and where it belongs.</li>
+        <li>How it gets <strong>linked</strong> to everything related.</li>
+        <li>How scattered notes become a <strong>synthesized</strong> page.</li>
+        <li>How you know a claim is <strong>still true</strong> — or where it came from.</li>
+        <li>What happens when two files <strong>contradict</strong> each other.</li>
+        <li>Who does all of this, <strong>forever</strong>, without getting bored.</li>
+      </ul>
+      <p>A format describes knowledge at rest. It says nothing about the lifecycle that produces and maintains it. Call that lifecycle the <strong>operational layer</strong> — and it's where every real knowledge base lives or dies.</p>
+
+      <h2>The operational layer, primitive by primitive</h2>
+      <p>You don't need to see our code to grasp the shape of the problem. Here are the primitives a <em>living</em> OKF base needs — the map, not the recipe.</p>
+      <div class="prim"><p><strong>1. Capture.</strong> If adding knowledge takes effort, it won't happen. You need a zero-friction drop point — a URL, a voice memo, a pasted thread — that the system, not the human, turns into a proper concept file. The moment capture becomes a chore, the base goes stale at the source.</p></div>
+      <div class="prim"><p><strong>2. Classification.</strong> A captured fragment has to become a <em>typed</em> concept in the right place. That's OKF's mandatory <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">type</code> field — but the spec only says it must exist, not how to assign it. Deciding "this is a <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#d4d2cb;">decision</code>, it belongs under Operations, here are its tags" is judgment at volume, which is exactly what LLMs are for.</p></div>
+      <div class="prim"><p><strong>3. Cross-linking.</strong> OKF's graph is built from links, and a graph with no edges is just a pile. The reason a knowledge base beats plain search is that the connections are <em>already there</em> before you ask. Maintaining them as the base grows is relentless and never finished — perfect for a machine, miserable for a person.</p></div>
+      <div class="prim"><p><strong>4. Synthesis.</strong> Raw notes aren't answers. Karpathy's key move is <em>persistent compilation</em>: an LLM that reads many sources, writes one coherent, cross-referenced page, and rewrites it when the sources change. This is what makes a wiki <em>compound</em> instead of merely pile up — and it's the step most "just use OKF" advice skips.</p></div>
+      <div class="prim"><p><strong>5. Provenance.</strong> A claim you can't trace is a claim you can't trust, and an agent that can't cite its sources isn't one you'll deploy anywhere that matters. Every synthesized statement should link back to where it came from. This isn't decoration — it's the load-bearing wall, because…</p></div>
+      <div class="prim"><p><strong>6. Semantic maintenance.</strong> …it's what lets the base catch its own decay. Structural checks — broken links, missing fields — are table stakes. The real work is <em>semantic</em>: two files that contradict each other, a claim a newer source has superseded, a concept mentioned everywhere but documented nowhere, a topic with suspiciously thin coverage. This is the immune system — and a format has no opinion about it at all.</p></div>
+      <div class="prim"><p><strong>7. Scheduling.</strong> This is what separates a demo from a system. Every primitive above <em>can</em> be run by a human "when they get to it." They won't. Karpathy's original insight was simple: <strong>LLMs don't get bored.</strong> Capture, linking, synthesis, and maintenance have to run unattended, on a schedule, in the small hours, with nobody in the loop. A knowledge base kept alive by good intentions is already dead — it just doesn't know it yet.</p></div>
+      <div class="prim"><p><strong>8. Reversibility.</strong> Anything automated that <em>changes</em> files has to be safe: every change committed to version control, every run reversible, every mutation reviewable. Automation without an undo button is how you wake up to a base that confidently rewrote itself wrong.</p></div>
+      <p>Eight primitives. OKF specifies the artifacts that <em>one</em> of them produces. The other seven are wide open — which is exactly why they're worth owning.</p>
+
+      <h2>Why "just export to OKF" isn't enough</h2>
+      <p>The tempting shortcut is to treat OKF as a finish line: run a script, dump your docs into compliant files, declare victory. That gets you a <em>snapshot</em> — and snapshots are the thing that rots.</p>
+      <p>It also misses why this pattern beats retrieval-augmented generation (RAG) in the first place. RAG rediscovers everything on every query, from scratch, with no memory that it ever reasoned about this before. The LLM-wiki bet — the one OKF encodes — is the opposite: <strong>compile once, compound forever.</strong> The cross-references are already there. The contradictions have already been flagged. The synthesis already happened last night, while you slept.</p>
+      <p>But that only pays off if something is doing the compiling, <em>continuously</em>. A static OKF bundle has the body of a compounding knowledge base and none of the metabolism. It looks identical on day one — and drifts a little further from reality every day after.</p>
+      <p>The format is necessary. It's nowhere near sufficient.</p>
+
+      <h2>Standing on shoulders (and saying so)</h2>
+      <p>None of these primitives are mine, and pretending otherwise would be both dishonest and pointless. Karpathy articulated the LLM-wiki concept. A community of implementers worked out the conventions — index files, append-only logs, source/concept separation, citation discipline, review gates — months before any of it carried a Google logo. OKF then did the real work: turning those conventions into a portable, vendor-neutral contract.</p>
+      <p>Our claim is narrower. We've been <em>running</em> this — the full operational layer, scheduled and unattended, on a real knowledge base — since before the standard existed. Building the format is a weekend. Building the metabolism that keeps it true, and trusting it enough to let it rewrite your knowledge while you sleep, takes real engineering and real mileage. That's the part most OKF adoption stories quietly skip, and the part that decides whether your agents are working from the truth.</p>
+
+      <h2>The takeaway</h2>
+      <p>If you're adopting OKF, go in with eyes open:</p>
+      <ul>
+        <li>The format is the easy 20%. The operational layer is the 80% that decides whether it works.</li>
+        <li>A knowledge base isn't a document you write; it's a system you run.</li>
+        <li>Automate the boring, relentless maintenance — or accept that your base will quietly drift out of date and take your agents' credibility with it.</li>
+        <li>Keep humans where humans are good (curating, asking, deciding), and machines where machines are good (the bookkeeping nobody sustains).</li>
+      </ul>
+      <p>OKF gave organizational knowledge a standard, portable body. The work worth doing — the work worth hiring for — is giving it a metabolism.</p>
+
+      <div class="about">
+        <h3>About</h3>
+        <p><strong style="color:#ece9e1;">Team Dub Labs</strong> builds the automation layer that keeps OKF knowledge bases alive — capture, classification, cross-linking, synthesis, and semantic maintenance, running unattended. Adopting OKF and want a system, not a snapshot?</p>
+        <div class="cta-row">
+          <a class="cta" href="./index.html#contact">Start a project &#8599;</a>
+          <a class="cta secondary" href="https://github.com/teamdublabs/okf-operational-layer" rel="noopener">Read on GitHub &#8599;</a>
+        </div>
+        <p class="lic">Released under <a href="https://github.com/teamdublabs/okf-operational-layer/blob/main/LICENSE" style="color:#9aa0a6;" rel="noopener">CC BY 4.0</a>. Discussion and issues welcome.</p>
+      </div>
+    </article>
+  </div>
+
+  <footer class="site">
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%;">
+      <span>Team Dub Labs Ltd</span>
+      <span>Production-grade R&amp;D · <a href="https://github.com/teamdublabs" rel="noopener">github.com/teamdublabs</a></span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

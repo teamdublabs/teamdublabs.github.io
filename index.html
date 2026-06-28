@@ -3,142 +3,221 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Team Dub Labs — Prototyping Tomorrow's Systems</title>
-<meta name="description" content="An independent lab for computer research. We build intelligent systems and run them on our own hardware.">
+<title>Team Dub Labs — Production-grade R&D</title>
+<meta name="description" content="Team Dub Labs Ltd is an R&D studio. We bridge the gap between speculative research and hardened, local-first production infrastructure. When off-the-shelf APIs fail, we build what's next.">
+<meta property="og:title" content="Team Dub Labs — Production-grade R&D">
+<meta property="og:description" content="We bridge the gap between speculative research and hardened, local-first production infrastructure. Frontier R&D that ends in production.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teamdub.com/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://teamdub.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; background: #0d0f12; }
-  ::selection { background: rgba(255,106,31,0.3); color: #fff; }
-  @keyframes caretBlink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
-  @keyframes flicker { 0%, 100% { opacity: .85 } 50% { opacity: .7 } }
-  @keyframes scanSweep { 0% { transform: translateY(-180px) } 100% { transform: translateY(100vh) } }
-  @keyframes ledPulse { 0%, 100% { opacity: 1 } 50% { opacity: .3 } }
-  .cta:hover { background: var(--accent, #ff6a1f); color: #0d0f12 !important; box-shadow: 0 0 26px rgba(255,106,31,0.4); }
-  @media (max-width: 720px) {
-    .hero { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding-top: 56px !important; }
-    .logbox { display: none !important; }
-    .eyebrow { flex-wrap: wrap !important; gap: 6px !important; font-size: 10px !important; letter-spacing: 0.1em !important; overflow-wrap: anywhere !important; }
-    .eyebrow > span { display: none !important; }
-    .registry div[style*="110px minmax"] { grid-template-columns: 54px minmax(0, 1fr) auto !important; gap: 12px !important; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:#0d0f12;}
+  ::selection{background:rgba(255,106,31,0.3);color:#fff;}
+  @keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+  @keyframes flicker{0%,100%{opacity:.85}50%{opacity:.7}}
+  @keyframes scanSweep{0%{transform:translateY(-180px)}100%{transform:translateY(100vh)}}
+  @keyframes ledPulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .cta:hover{background:var(--accent,#ff6a1f);color:#0d0f12 !important;box-shadow:0 0 26px rgba(255,106,31,0.4);}
+  .cta.secondary:hover{background:transparent;color:#e8e6e0 !important;box-shadow:none;border-color:#e8e6e0;}
+  .svc-card:hover{border-color:rgba(255,106,31,0.35) !important;}
+  a.navlink:hover{color:#e8e6e0 !important;}
+  a.lab-link{text-decoration:none;color:inherit;transition:background .15s;}
+  a.lab-link:hover{background:rgba(255,106,31,0.06);}
+  a.lab-link:hover .lab-name{color:#fff !important;}
+  a.lab-link .arr{color:var(--accent,#ff6a1f);opacity:0;margin-left:7px;font-size:12px;transition:opacity .15s;}
+  a.lab-link:hover .arr{opacity:1;}
+  @media (max-width:720px){
+    .hero{grid-template-columns:minmax(0,1fr) !important;gap:0 !important;padding-top:56px !important;}
+    .logbox{display:none !important;}
+    .eyebrow{flex-wrap:wrap !important;gap:6px !important;font-size:10px !important;letter-spacing:0.1em !important;overflow-wrap:anywhere !important;}
+    .eyebrow>span{display:none !important;}
+    .registry div[style*="110px minmax"]{grid-template-columns:54px minmax(0,1fr) auto !important;gap:12px !important;}
+    .services-grid{grid-template-columns:minmax(0,1fr) !important;}
+    .about{grid-template-columns:minmax(0,1fr) !important;gap:28px !important;}
+    .contact-grid{grid-template-columns:minmax(0,1fr) !important;gap:28px !important;}
+    .ctas{flex-wrap:wrap !important;}
   }
 </style>
 </head>
 <body>
 
-<div style="--accent: #ff6a1f; position: relative; min-height: 100vh; background: radial-gradient(125% 80% at 50% -12%, #1b1f25 0%, #0d0f12 58%); color: #e8e6e0; font-family: 'IBM Plex Mono', ui-monospace, monospace; overflow: hidden;">
+<div style="--accent:#ff6a1f;position:relative;min-height:100vh;background:radial-gradient(125% 80% at 50% -12%, #1b1f25 0%, #0d0f12 58%);color:#e8e6e0;font-family:'IBM Plex Mono',ui-monospace,monospace;overflow:hidden;">
 
-  <div aria-hidden="true" style="pointer-events: none; position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(to right, rgba(255,106,31,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,106,31,0.12) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(125% 95% at 50% 0%, #000 28%, transparent 82%); mask-image: radial-gradient(125% 95% at 50% 0%, #000 28%, transparent 82%);"></div>
+  <div aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:0;background-image:linear-gradient(to right, rgba(255,106,31,0.12) 1px, transparent 1px),linear-gradient(to bottom, rgba(255,106,31,0.12) 1px, transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(125% 95% at 50% 0%, #000 28%, transparent 82%);mask-image:radial-gradient(125% 95% at 50% 0%, #000 28%, transparent 82%);"></div>
+  <div aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:50;background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px);mix-blend-mode:overlay;animation:flicker 5s ease-in-out infinite;"></div>
+  <div aria-hidden="true" style="pointer-events:none;position:fixed;left:0;right:0;top:0;height:180px;z-index:51;background:linear-gradient(to bottom, transparent, rgba(255,255,255,0.045), transparent);animation:scanSweep 6.5s linear infinite;"></div>
+  <div aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:49;background:radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%);"></div>
 
-  <div aria-hidden="true" style="pointer-events: none; position: fixed; inset: 0; z-index: 50; background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px); mix-blend-mode: overlay; animation: flicker 5s ease-in-out infinite;"></div>
-  <div aria-hidden="true" style="pointer-events: none; position: fixed; left: 0; right: 0; top: 0; height: 180px; z-index: 51; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.045), transparent); animation: scanSweep 6.5s linear infinite;"></div>
-  <div aria-hidden="true" style="pointer-events: none; position: fixed; inset: 0; z-index: 49; background: radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%);"></div>
+  <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px;">
 
-  <div style="position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 28px;">
-
-    <header style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 18px 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9aa0a6;">
-      <span style="display: inline-flex; align-items: center; gap: 9px; color: #e8e6e0;">
-        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #ff6a1f); box-shadow: 0 0 9px var(--accent, #ff6a1f); animation: ledPulse 2.4s ease-in-out infinite;"></span>
-        teamdub.labs
+    <header style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#9aa0a6;">
+      <span style="display:inline-flex;align-items:center;gap:9px;color:#e8e6e0;">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--accent,#ff6a1f);box-shadow:0 0 9px var(--accent,#ff6a1f);animation:ledPulse 2.4s ease-in-out infinite;"></span>
+        teamdub.labs<span style="color:#6b7077;letter-spacing:0.18em;">&nbsp;ltd</span>
       </span>
-      <span style="display: inline-flex; align-items: center; gap: 12px;">
-        <span>SYS&nbsp;NOMINAL</span>
-        <span style="opacity: .35;">/</span>
-        <span>EST&nbsp;2006</span>
-        <span style="opacity: .35;">/</span>
-        <a href="https://github.com/teamdublabs" rel="noopener" style="color: var(--accent, #ff6a1f); text-decoration: none;">GITHUB&nbsp;&#8599;</a>
-      </span>
+      <nav aria-label="Primary" style="display:inline-flex;align-items:center;gap:18px;">
+        <a class="navlink" href="#services" style="color:#9aa0a6;text-decoration:none;">Services</a>
+        <a class="navlink" href="#lab" style="color:#9aa0a6;text-decoration:none;">Lab</a>
+        <a class="navlink" href="#contact" style="color:#9aa0a6;text-decoration:none;">Contact</a>
+        <span style="opacity:.35;">/</span>
+        <a class="navlink" href="https://github.com/teamdublabs" rel="noopener" style="color:var(--accent,#ff6a1f);text-decoration:none;">GITHUB&nbsp;&#8599;</a>
+      </nav>
     </header>
 
-    <section class="hero" style="display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr); gap: 52px; align-items: center; padding: 76px 0 64px;">
+    <section class="hero" style="display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,0.92fr);gap:52px;align-items:center;padding:76px 0 56px;">
       <div>
-        <p class="eyebrow" style="display: inline-flex; align-items: center; gap: 12px; margin: 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #9aa0a6;">
-          <span style="width: 28px; height: 1px; background: var(--accent, #ff6a1f);"></span>
-          CS&nbsp;&middot;&nbsp;ML&nbsp;&middot;&nbsp;AI&nbsp;&middot;&nbsp;SIGINT&nbsp;&middot;&nbsp;InfoSEC&nbsp;&middot;&nbsp;OpSEC
-          <span style="width: 28px; height: 1px; background: var(--accent, #ff6a1f);"></span>
+        <p class="eyebrow" style="display:inline-flex;align-items:center;gap:12px;margin:0;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa0a6;">
+          <span style="width:28px;height:1px;background:var(--accent,#ff6a1f);"></span>
+          R&amp;D&nbsp;STUDIO&nbsp;&middot;&nbsp;AI&nbsp;&amp;&nbsp;SYSTEMS
+          <span style="width:28px;height:1px;background:var(--accent,#ff6a1f);"></span>
         </p>
-        <h1 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 5.2vw, 64px); line-height: 0.98; letter-spacing: -0.025em; margin: 20px 0 24px; color: #f3f1eb; text-shadow: 0 0 26px rgba(255,106,31,0.22);">Prototyping<br>Tomorrow&rsquo;s<br>Systems<span style="color: var(--accent, #ff6a1f); animation: caretBlink 1.1s steps(1) infinite;">_</span></h1>
-        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 17px; line-height: 1.6; max-width: 30em; margin: 0 0 32px; color: #c0beb7;">
-          An independent lab for computer research. We build intelligent systems and run them on our own hardware.<br>We also <span style="color: var(--accent, #ff6a1f); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em;">f#@%</span> around and find out&hellip; how things work.
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(44px,5.6vw,72px);line-height:0.98;letter-spacing:-0.03em;margin:20px 0 22px;color:#f3f1eb;text-shadow:0 0 26px rgba(255,106,31,0.22);">Production-grade<br>R&amp;D<span style="color:var(--accent,#ff6a1f);animation:caretBlink 1.1s steps(1) infinite;">_</span></h1>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:18px;line-height:1.6;max-width:30em;margin:0 0 32px;color:#c0beb7;">
+          We bridge the gap between speculative research and hardened, local-first production infrastructure. When off-the-shelf APIs fail, we build what's next.
         </p>
-        <a class="cta" href="https://github.com/teamdublabs" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border: 1px solid var(--accent, #ff6a1f); color: var(--accent, #ff6a1f); text-decoration: none; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; transition: background .18s, color .18s, box-shadow .18s;">Enter&nbsp;the&nbsp;workshop&nbsp;&#8599;</a>
+        <div class="ctas" style="display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <a class="cta" href="#contact" style="display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border:1px solid var(--accent,#ff6a1f);color:var(--accent,#ff6a1f);text-decoration:none;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;transition:background .18s,color .18s,box-shadow .18s;">Start&nbsp;a&nbsp;project&nbsp;&#8599;</a>
+          <a class="cta secondary" href="#lab" style="display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border:1px solid rgba(255,255,255,0.18);color:#e8e6e0;text-decoration:none;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;transition:background .18s,color .18s,box-shadow .18s,border-color .18s;">See&nbsp;the&nbsp;lab</a>
+        </div>
       </div>
 
-      <aside class="logbox" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(7,8,10,0.72); overflow: hidden; box-shadow: 0 28px 64px rgba(0,0,0,0.55), inset 0 0 70px rgba(255,106,31,0.03); backdrop-filter: blur(2px);">
-        <div style="display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
-          <span style="display: inline-flex; gap: 6px;">
-            <i style="display: block; width: 11px; height: 11px; border-radius: 50%; background: #ff5f57;"></i>
-            <i style="display: block; width: 11px; height: 11px; border-radius: 50%; background: #febc2e;"></i>
-            <i style="display: block; width: 11px; height: 11px; border-radius: 50%; background: #28c840;"></i>
+      <aside class="logbox" style="border:1px solid rgba(255,255,255,0.1);border-radius:8px;background:rgba(7,8,10,0.72);overflow:hidden;box-shadow:0 28px 64px rgba(0,0,0,0.55), inset 0 0 70px rgba(255,106,31,0.03);backdrop-filter:blur(2px);">
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);">
+          <span style="display:inline-flex;gap:6px;">
+            <i style="display:block;width:11px;height:11px;border-radius:50%;background:#ff5f57;"></i>
+            <i style="display:block;width:11px;height:11px;border-radius:50%;background:#febc2e;"></i>
+            <i style="display:block;width:11px;height:11px;border-radius:50%;background:#28c840;"></i>
           </span>
-          <span style="font-size: 12px; color: #9aa0a6; letter-spacing: 0.08em;">session.log</span>
+          <span style="font-size:12px;color:#9aa0a6;letter-spacing:0.08em;">session.log</span>
         </div>
-        <div style="padding: 18px; font-size: 13px; line-height: 1.7; min-height: 314px; color: #9aa0a6;">
+        <div style="padding:18px;font-size:13px;line-height:1.7;min-height:314px;color:#9aa0a6;">
           <div id="log-lines"></div>
-          <div style="color: #d4d2cb; white-space: pre-wrap;"><span id="log-current"></span><span style="color: var(--accent, #ff6a1f); animation: caretBlink 1s steps(1) infinite;">_</span></div>
+          <div style="color:#d4d2cb;white-space:pre-wrap;"><span id="log-current"></span><span style="color:var(--accent,#ff6a1f);animation:caretBlink 1s steps(1) infinite;">_</span></div>
         </div>
       </aside>
     </section>
 
-    <section class="registry" style="padding: 8px 0 76px;">
-      <h2 style="display: flex; align-items: center; gap: 18px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.2em; color: #9aa0a6; font-weight: 600; margin: 0 0 20px;">
-        <span>Experiment&nbsp;registry</span>
-        <span style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></span>
-      </h2>
-
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 0 4px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: #6b7077; border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <span>ID</span><span>Experiment</span><span>Status</span>
+    <section class="about" id="about" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;padding:12px 0 56px;border-top:1px solid rgba(255,255,255,0.08);">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.2em;color:#9aa0a6;font-weight:600;margin:28px 0 0;">The studio</h2>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.7;color:#c0beb7;margin:28px 0 0;">
+        <p style="margin:0 0 14px;">
+          Team Dub Labs Ltd works where systems engineering meets frontier AI. Most shops do one or the other &mdash; publish papers, or build to spec. We take the hard part in between: the unproven, the unsolved, the thing with no off-the-shelf answer &mdash; and we make it run, locally, in production.
+        </p>
+        <p style="margin:0;color:#9aa0a6;">
+          Then we carry it all the way to a system you can run. The lab is where the hard problems get solved. The studio is how they reach you.
+        </p>
       </div>
-
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-001</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">Hyperdimensional Memory</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>Active</span>
-      </div>
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-002</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">Applied ML For Science</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>In&nbsp;progress</span>
-      </div>
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-003</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">Self-Organizing Knowledge</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>Active</span>
-      </div>
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-004</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">Autonomous Infrastructure</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>In&nbsp;progress</span>
-      </div>
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-005</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">Agent Tooling &amp; Skills</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>In&nbsp;progress</span>
-      </div>
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-006</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">Reflective Agents</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>Active</span>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 124px; gap: 16px; align-items: center; padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <span style="color: var(--accent, #ff6a1f); font-size: 12px;">EXP-007</span>
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #e8e6e0;">AI-Assisted Red Teaming</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7ee0b0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7ee0b0; box-shadow: 0 0 8px #7ee0b0;"></span>In&nbsp;progress</span>
-      </div>
-
-      <p style="margin: 18px 4px 0; font-size: 12px; color: #6b7077; letter-spacing: 0.04em;">7&nbsp;records &middot; more instruments coming online</p>
     </section>
 
-    <footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #6b7077; letter-spacing: 0.06em;">
-      <span style="display: inline-flex; align-items: center; gap: 9px;">
-        <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent, #ff6a1f); box-shadow: 0 0 8px var(--accent, #ff6a1f);"></span>teamdub.com
+    <section class="services" id="services" style="padding:24px 0 64px;border-top:1px solid rgba(255,255,255,0.08);">
+      <h2 style="display:flex;align-items:center;gap:18px;font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.2em;color:#9aa0a6;font-weight:600;margin:28px 0 28px;">
+        <span>What we do</span>
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.1);"></span>
+      </h2>
+      <div class="services-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;">
+        <article class="svc-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:22px 22px 20px;background:rgba(7,8,10,0.5);transition:border-color .18s;">
+          <div style="font-size:11px;color:var(--accent,#ff6a1f);letter-spacing:0.12em;">01</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;margin:8px 0 8px;color:#f3f1eb;">Systems Architecture &amp; Engineering</h3>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;margin:0;color:#9aa0a6;">End-to-end product architecture, custom networking protocols, and localized deployment. We design and build robust infrastructure capable of handling intensive workloads.</p>
+        </article>
+        <article class="svc-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:22px 22px 20px;background:rgba(7,8,10,0.5);transition:border-color .18s;">
+          <div style="font-size:11px;color:var(--accent,#ff6a1f);letter-spacing:0.12em;">02</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;margin:8px 0 8px;color:#f3f1eb;">Advanced AI &amp; Orchestration</h3>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;margin:0;color:#9aa0a6;">Local LLMs, multi-agent systems, and retrieval pipelines wired into your own data &mdash; not someone else&rsquo;s API. Intelligence that runs on your infrastructure.</p>
+        </article>
+        <article class="svc-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:22px 22px 20px;background:rgba(7,8,10,0.5);transition:border-color .18s;">
+          <div style="font-size:11px;color:var(--accent,#ff6a1f);letter-spacing:0.12em;">03</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;margin:8px 0 8px;color:#f3f1eb;">Custom R&amp;D Spikes</h3>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;margin:0;color:#9aa0a6;">The deep-tech problems with no off-the-shelf answers. Custom evaluation harnesses, complex automation loops, and prototyping novel execution layers under tight technical constraints.</p>
+        </article>
+        <article class="svc-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:22px 22px 20px;background:rgba(7,8,10,0.5);transition:border-color .18s;">
+          <div style="font-size:11px;color:var(--accent,#ff6a1f);letter-spacing:0.12em;">04</div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;margin:8px 0 8px;color:#f3f1eb;">Validation &amp; Red Teaming</h3>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;margin:0;color:#9aa0a6;">Short, high-impact engagements to stress-test your system&rsquo;s architecture, security boundaries, or AI evaluation pipelines before moving to wide-scale production.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="registry" id="lab" style="padding:24px 0 56px;border-top:1px solid rgba(255,255,255,0.08);">
+      <h2 style="display:flex;align-items:center;gap:18px;font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.2em;color:#9aa0a6;font-weight:600;margin:28px 0 8px;">
+        <span>The lab &mdash; what we&rsquo;ve cracked</span>
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.1);"></span>
+      </h2>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;max-width:42em;margin:0 0 22px;color:#9aa0a6;">The active research threads behind the studio &mdash; what client work is drawn from, and what we ship.</p>
+
+      <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:0 4px 12px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#6b7077;border-bottom:1px solid rgba(255,255,255,0.1);">
+        <span>ID</span><span>Research thread</span><span>Status</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-001</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;">Hyperdimensional Memory Systems</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>In&nbsp;production</span>
+      </div>
+      <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-002</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;">Localized Multi-Agent Orchestration</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>Active</span>
+      </div>
+      <a class="lab-link" href="./okf-operational-layer.html" style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-003</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;"><span class="lab-name" style="transition:color .15s;">Self-Organizing Knowledge Graphs</span><span class="arr">Read&nbsp;&#8599;</span></span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>In&nbsp;production</span>
+      </a>
+      <a class="lab-link" href="https://github.com/teamdublabs/dubdeck" rel="noopener" style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-004</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;"><span class="lab-name" style="transition:color .15s;">Autonomous Infrastructure Layers</span><span class="arr">GitHub&nbsp;&#8599;</span></span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>Active</span>
+      </a>
+      <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-005</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;">Deterministic Evaluation Harnesses</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>In&nbsp;production</span>
+      </div>
+      <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-006</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;">Reflective Agent Workflows</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>Active</span>
+      </div>
+      <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 124px;gap:16px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--accent,#ff6a1f);font-size:12px;">EXP-007</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#e8e6e0;">AI-Assisted Red Teaming Systems</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ee0b0;"><span style="width:7px;height:7px;border-radius:50%;background:#7ee0b0;box-shadow:0 0 8px #7ee0b0;"></span>Active</span>
+      </div>
+
+      <p style="margin:18px 4px 0;font-size:12px;color:#6b7077;letter-spacing:0.04em;">7&nbsp;active threads &middot; drawn on for client work</p>
+    </section>
+
+    <section class="contact" id="contact" style="padding:32px 0 48px;border-top:1px solid rgba(255,255,255,0.08);">
+      <h2 style="display:flex;align-items:center;gap:18px;font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.2em;color:#9aa0a6;font-weight:600;margin:28px 0 16px;">
+        <span>Start a project</span>
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.1);"></span>
+      </h2>
+      <div class="contact-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;align-items:center;">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:19px;line-height:1.55;margin:0;color:#e8e6e0;">
+          Tell us what you&rsquo;re building. We reply within one business day with whether it&rsquo;s a fit, who&rsquo;d work on it, and a suggested first step.
+        </p>
+        <div style="border:1px solid rgba(255,255,255,0.1);border-radius:8px;background:rgba(7,8,10,0.5);padding:28px;box-shadow:inset 0 0 70px rgba(255,106,31,0.03);">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#9aa0a6;margin:0 0 14px;">Get in touch</p>
+          <a class="cta" href="mailto:contact@teamdub.com?subject=New%20project%20inquiry" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:1px solid var(--accent,#ff6a1f);color:var(--accent,#ff6a1f);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;transition:background .18s,color .18s,box-shadow .18s;">contact@teamdub.com&nbsp;&#8599;</a>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.6;margin:16px 0 0;color:#6b7077;">A few sentences on what you&rsquo;re building, the team, and the timeline gets us to a useful first reply fastest.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:22px 0;border-top:1px solid rgba(255,255,255,0.08);font-size:12px;color:#6b7077;letter-spacing:0.06em;">
+      <span style="display:inline-flex;align-items:center;gap:9px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--accent,#ff6a1f);box-shadow:0 0 8px var(--accent,#ff6a1f);"></span>Team Dub Labs Ltd
       </span>
-      <span style="display: inline-flex; align-items: center; gap: 16px;">
-        <span>&copy;&nbsp;2026 &middot; est.&nbsp;2006</span>
-        <a href="https://github.com/teamdublabs" rel="noopener" style="color: #9aa0a6; text-decoration: none;">github.com/teamdublabs</a>
+      <span style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <span>Production-grade R&amp;D</span>
+        <span style="opacity:.35;">/</span>
+        <a href="https://github.com/teamdublabs" rel="noopener" style="color:#9aa0a6;text-decoration:none;">github.com/teamdublabs</a>
       </span>
     </footer>
 
@@ -149,20 +228,18 @@
   (function () {
     var ACCENT = "#ff6a1f";
     var script = [
-      "$ ./teamdub boot --all",
-      "[sys] initializing instruments ......... ok",
-      "[net] uplink teamdub.labs .............. ok",
-      "[exp] EXP-001 hyperdimensional memory .. online",
-      "[exp] EXP-002 applied ML for science ... online",
-      "[exp] EXP-003 self-organizing knowledge  online",
-      "[exp] EXP-004 autonomous infra ......... online",
-      "[exp] EXP-005 agent tooling & skills ... online",
-      "[exp] EXP-006 reflective agents ........ online",
-      "[exp] EXP-007 ai-assisted red teaming .. online",
-      "> 7 experiments online · status nominal",
-      "> science, in progress",
+      "$ ./teamdub boot --production",
+      "[sys] initializing local environment ... ok",
+      "[net] establishing secure uplink ........ ok",
+      "[ai ] loading agentic orchestrators .... ok",
+      "[ops] core systems architecture ........ online",
+      "[ops] localized intelligence systems ... online",
+      "[ops] custom r&d pipelines ............. online",
+      "[lab] 7 active research threads ........ nominal",
+      "> systems nominal · shipping nominal",
+      "> state your technical constraints.",
     ];
-    var charMs = 3; // base ms per character
+    var charMs = 3;
     var linesEl = document.getElementById("log-lines");
     var curEl = document.getElementById("log-current");
     var li = 0, ci = 0, timer;
@@ -170,10 +247,8 @@
     function lineColor(t) {
       if (t.charAt(0) === "$" || t.charAt(0) === ">") return ACCENT;
       if (t.indexOf("online") !== -1 || /ok$/.test(t)) return "#d6d4cd";
-      if (t.indexOf("queued") !== -1) return "#d9a441";
       return "#9aa0a6";
     }
-
     function tick() {
       if (li >= script.length) return;
       var full = script[li];
@@ -192,11 +267,9 @@
         timer = setTimeout(tick, 60);
       }
     }
-
     if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setTimeout(tick, 480);
     } else {
-      // Reduced motion: render the full log instantly.
       for (var i = 0; i < script.length; i++) {
         var d = document.createElement("div");
         d.style.color = lineColor(script[i]);
