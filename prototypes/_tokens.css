@@ -52,24 +52,24 @@
   --s5: 24px;  --s6: 32px;  --s7: 48px;  --s8: 64px;
   --s9: 96px;  --s10: 128px;
 
-  /* --- Interim logo assets ---
-     Still the Lemon Milk lockup. Wes is rebuilding both in
-     Archivo; swapping these two lines updates every prototype.
+  /* --- Logo assets (rebuilt 2026-07-31, all transparent) ---
+     logo-horizontal.png ......... banner lockup, 1433x336
+     logo-lockup-transparent.png . stacked lockup, 792x390
+     logo-mark-new.png ........... square TD mark tile, 800x800
+     (logo-lockup.png / logo-mark.png are the old opaque files,
+      kept only so the round-1 pages stay exactly as reviewed.)
 
-     CONSTRAINTS found while building — all three want fixing in
-     the rebuild:
-       1. Both files are fully opaque (no alpha channel).
-       2. Both are dark-ground-only designs — "LABS" is charcoal
-          knocked out of the orange bar and the top half of the
-          wordmark is off-white, so neither survives on Off-White.
-          (The square mark reads fine on light as its own tile.)
-       3. The lockup is near-square (aspect 1.29), so it is a
-          stacked mark, not a horizontal one, and goes illegible
-          below ~100px wide — unusable as a header logo.
-     Rebuild wants: transparent SVG, a horizontal lockup, and a
-     light-ground variant. */
-  --logo-lockup: url('../assets/logo-lockup.png');
-  --logo-mark:   url('../assets/logo-mark.png');
+     USAGE RULE — Brand Identity Guidelines §4 Logo Usage:
+     The banner (horizontal) lockup is DARK-BACKGROUND ONLY. Never
+     place it on a light ground — its baked-in black panel reads as
+     a heavy block on Off-White. The stacked lockup is dark-only
+     too: the upper halves of its letterforms are off-white and
+     vanish on light. On light grounds use the square TD mark
+     (self-contained dark tile) with the wordmark as live Archivo
+     text — the .brand pattern below — or the mark alone. */
+  --logo-banner: url('../assets/logo-horizontal.png');
+  --logo-lockup: url('../assets/logo-lockup-transparent.png');
+  --logo-mark:   url('../assets/logo-mark-new.png');
 }
 
 /* --- Shared reset --- */
@@ -79,12 +79,10 @@ body { margin: 0; overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
-/* Header brand lockup.
-   The full lockup is near-square (aspect 1.29) — a stacked mark, not a
-   horizontal one — so it is illegible below roughly 100px wide and cannot
-   serve as a small header logo. Headers therefore pair the square TD mark
-   (aspect 1.0, the icon-role asset) with the name as live Archivo text.
-   Once the horizontal SVG rebuild lands this can collapse to one <img>. */
+/* Header brand pattern for LIGHT grounds (see usage rule above):
+   square TD mark — its own dark tile — plus the name as live Archivo
+   text. Headers on DARK grounds may use the banner lockup <img>
+   directly instead. */
 .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:inherit;}
 .brand-mark{height:34px;width:34px;flex:none;}
 .brand-name{font-family:var(--font-header);text-transform:uppercase;
