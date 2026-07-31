@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Team Dub Labs — 10 Grid Index</title>
+<link rel="stylesheet" href="_tokens.css">
+<style>
+  body{background:var(--space-black);color:var(--off-white);
+    font-family:var(--font-body);font-size:15.5px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 var(--s5);}
+
+  header{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);
+    flex-wrap:wrap;padding:var(--s5) 0;border-bottom:1px solid var(--black-raise-2);}
+  .logo{height:24px;width:auto;}
+  nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;align-items:center;}
+  nav a{color:var(--muted-on-dark);text-decoration:none;}
+  nav a:hover{color:var(--safety-orange);}
+  nav a.cta{background:var(--safety-orange);color:var(--on-orange);padding:9px 16px;font-weight:700;}
+  nav a.cta:hover{filter:brightness(1.1);color:var(--on-orange);}
+
+  /* Everything is a module on one grid. No long-form scroll. */
+  .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+    gap:var(--s4);padding:var(--s6) 0 var(--s8);}
+  .mod{border:1px solid var(--black-raise-2);background:var(--black-raise-1);
+    padding:var(--s5);display:flex;flex-direction:column;}
+  .mod .label{font-family:var(--font-header);font-size:10px;text-transform:uppercase;
+    letter-spacing:.18em;color:var(--muted-on-dark);font-weight:700;margin:0 0 var(--s4);}
+  .mod h3{font-family:var(--font-header);text-transform:uppercase;font-weight:700;
+    font-size:14.5px;letter-spacing:var(--track-header);margin:0 0 var(--s3);}
+  .mod p{margin:0;color:#b4b4bb;font-size:14.5px;}
+
+  /* spans */
+  .c12{grid-column:span 12;} .c8{grid-column:span 8;} .c6{grid-column:span 6;}
+  .c4{grid-column:span 4;}   .c5{grid-column:span 5;} .c7{grid-column:span 7;}
+  .c3{grid-column:span 3;}
+
+  .mod.hero{background:transparent;border-color:transparent;padding:var(--s6) 0 var(--s4);}
+  .mod.hero h1{font-size:clamp(32px,5.4vw,64px);margin:0 0 var(--s4);}
+  .mod.hero p{font-size:clamp(17px,2vw,20px);color:#c4c4cb;max-width:34em;}
+
+  .mod.accent{background:var(--safety-orange);color:var(--on-orange);border-color:var(--safety-orange);}
+  .mod.accent .label{color:rgba(29,29,31,.65);}
+  .mod.accent p{color:rgba(29,29,31,.85);}
+  .mod.accent h3{font-size:clamp(18px,2.4vw,26px);}
+
+  .svc:hover{border-color:rgba(255,95,21,.5);}
+  .svc{transition:border-color .18s;}
+  .svc .n{font-family:var(--font-display);font-size:20px;color:var(--safety-orange);
+    margin:0 0 var(--s3);line-height:1;}
+
+  .listing{display:flex;flex-direction:column;gap:0;margin-top:var(--s2);}
+  .listing a{display:flex;justify-content:space-between;gap:var(--s4);align-items:baseline;
+    padding:11px 0;border-bottom:1px solid var(--black-raise-2);text-decoration:none;font-size:14.5px;}
+  .listing a:last-child{border-bottom:none;}
+  .listing a:hover span:first-child{color:var(--safety-orange);}
+  .listing .d{font-size:11px;color:var(--muted-on-dark);white-space:nowrap;}
+  .soon{font-size:13px;color:var(--muted-on-dark);margin:var(--s3) 0 0;}
+
+  .kv{display:flex;justify-content:space-between;gap:var(--s4);
+    padding:8px 0;border-bottom:1px solid var(--black-raise-2);font-size:14px;}
+  .kv:last-child{border-bottom:none;}
+  .kv span:first-child{color:var(--muted-on-dark);}
+
+  .steps{display:flex;flex-direction:column;gap:var(--s4);}
+  .steps div h4{font-family:var(--font-header);text-transform:uppercase;font-size:12.5px;
+    letter-spacing:var(--track-header);margin:0 0 3px;}
+  .steps div h4 span{color:var(--safety-orange);}
+  .steps div p{font-size:14px;}
+
+  .chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s2);}
+  .chips span{font-family:var(--font-header);font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.12em;font-weight:600;border:1px solid var(--black-raise-2);
+    padding:6px 10px;color:#b4b4bb;}
+
+  .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:700;font-size:12.5px;text-decoration:none;
+    padding:13px 22px;background:var(--space-black);color:var(--off-white);
+    align-self:flex-start;margin-top:auto;}
+  .btn:hover{filter:brightness(1.3);}
+
+  footer{padding:var(--s5) 0;border-top:1px solid var(--black-raise-2);
+    display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+    font-size:12px;color:var(--muted-on-dark);}
+
+  @media (max-width:1000px){
+    .c8,.c7,.c6,.c5{grid-column:span 12;} .c4,.c3{grid-column:span 6;}
+  }
+  @media (max-width:640px){
+    .c4,.c3{grid-column:span 12;}
+    .grid{gap:var(--s3);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="#top"><img class="brand-mark" src="../assets/logo-mark.png" alt=""><span class="brand-name">Team Dub Labs</span></a>
+    <nav class="u-header">
+      <a href="#services">Services</a><a href="#writing">Writing</a>
+      <a class="cta" href="mailto:contact@teamdub.com">Start a project</a>
+    </nav>
+  </header>
+
+  <div class="grid">
+
+    <div class="mod hero c12">
+      <h1 class="u-display">Built to spec</h1>
+      <p>We help companies put AI to work, automate the workflows that eat their week, and build the software they can't buy off the shelf.</p>
+    </div>
+
+    <article class="mod svc c4" id="services">
+      <p class="label">Service 01</p>
+      <div class="n">01</div>
+      <h3>AI Implementation</h3>
+      <p>We work out what AI should actually do in your business, prove it on a narrow slice, and put it into production with the guardrails and evaluation needed to keep it honest.</p>
+    </article>
+
+    <article class="mod svc c4">
+      <p class="label">Service 02</p>
+      <div class="n">02</div>
+      <h3>Workflow Automation</h3>
+      <p>The repetitive work that eats your week. Sometimes that needs AI. Often it just needs a well-built integration between four systems you already pay for. We'll tell you which.</p>
+    </article>
+
+    <article class="mod svc c4">
+      <p class="label">Service 03</p>
+      <div class="n">03</div>
+      <h3>Custom Software</h3>
+      <p>For when the off-the-shelf tool doesn't fit, and bending the business around it costs more than building the right thing. Designed, built, documented, handed over.</p>
+    </article>
+
+    <div class="mod c5">
+      <p class="label">How we work</p>
+      <div class="steps">
+        <div><h4><span>01</span> Scope</h4><p>A paid discovery. We tell you what's worth doing — including when the answer is "don't."</p></div>
+        <div><h4><span>02</span> Prove</h4><p>A working slice on your real data, in weeks. You watch it run before committing.</p></div>
+        <div><h4><span>03</span> Ship</h4><p>Into production, on infrastructure you control, documented and handed over.</p></div>
+      </div>
+    </div>
+
+    <div class="mod c4">
+      <p class="label">Capabilities</p>
+      <div class="chips">
+        <span>Local LLM inference</span><span>Agent orchestration</span>
+        <span>Retrieval pipelines</span><span>Evaluation harnesses</span>
+        <span>System integration</span><span>Data pipelines</span>
+        <span>Self-hosted infra</span><span>Web &amp; API</span>
+      </div>
+    </div>
+
+    <div class="mod c3">
+      <p class="label">Details</p>
+      <div class="kv"><span>Entity</span><span>Team Dub Labs Ltd</span></div>
+      <div class="kv"><span>Principal</span><span>Wes</span></div>
+      <div class="kv"><span>Based</span><span>Regina, SK</span></div>
+      <div class="kv"><span>Site</span><span>teamdub.com</span></div>
+    </div>
+
+    <div class="mod c7">
+      <p class="label">Who you're hiring</p>
+      <h3>We run it too</h3>
+      <p>Team Dub Labs runs on the same things we sell. Our own operations sit on a self-hosted stack — local model inference, agent orchestration, an append-only audit trail — running in production every day, not as a demo. If we recommend something to you, we're already running it ourselves and we know where it breaks.</p>
+    </div>
+
+    <div class="mod c5" id="writing">
+      <p class="label">Writing</p>
+      <div class="listing">
+        <a href="../okf-operational-layer.html"><span>Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d">Jun 2026</span></a>
+      </div>
+      <p class="soon">More in progress.</p>
+    </div>
+
+    <div class="mod accent c12">
+      <p class="label">Contact</p>
+      <h3>Tell us what's slow, what's manual, or what you wish existed</h3>
+      <p>We'll tell you honestly whether it's worth building.</p>
+      <a class="btn" href="mailto:contact@teamdub.com?subject=Project%20enquiry">contact@teamdub.com</a>
+    </div>
+
+  </div>
+
+  <footer><span>© 2026 Team Dub Labs Ltd</span><span>Direction 10 — Grid Index</span></footer>
+
+</div>
+</body>
+</html>

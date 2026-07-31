@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Team Dub Labs — 07 Poster</title>
+<link rel="stylesheet" href="_tokens.css">
+<style>
+  /* NOTE: this direction deliberately exceeds the 60-30-10 orange guidance.
+     Full-bleed orange panels use Space Black text (5.53:1, AA). It is the
+     one direction that trades brand-doc compliance for impact — flagged
+     as such in the gallery. */
+  body{background:var(--space-black);color:var(--off-white);
+    font-family:var(--font-body);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 var(--s5);}
+
+  header .wrap{display:flex;justify-content:space-between;align-items:center;
+    gap:var(--s4);flex-wrap:wrap;padding-top:var(--s5);padding-bottom:var(--s5);}
+  .logo{height:26px;width:auto;}
+  nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;}
+  nav a{color:var(--muted-on-dark);text-decoration:none;}
+  nav a:hover{color:var(--safety-orange);}
+
+  /* Panels alternate ground. Type is the whole design. */
+  .panel{padding:var(--s10) 0;}
+  .panel.orange{background:var(--safety-orange);color:var(--on-orange);}
+  .panel.light{background:var(--off-white);color:var(--space-black);}
+
+  .mega{font-family:var(--font-display);font-size:clamp(44px,11.5vw,152px);
+    line-height:.92;letter-spacing:-.02em;margin:0;}
+  .sub{font-size:clamp(18px,2.4vw,26px);max-width:24em;margin:var(--s6) 0 0;line-height:1.4;}
+  .panel.orange .sub{color:rgba(29,29,31,.82);}
+  .panel.light  .sub{color:#3a3a40;}
+
+  .tag{font-family:var(--font-header);font-size:12px;text-transform:uppercase;
+    letter-spacing:.24em;font-weight:800;margin:0 0 var(--s6);}
+  .panel.orange .tag{color:rgba(29,29,31,.65);}
+  .panel.light  .tag{color:var(--muted-on-light);}
+  .panel:not(.orange):not(.light) .tag{color:var(--safety-orange);}
+
+  .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:800;font-size:14px;text-decoration:none;
+    padding:18px 36px;margin-top:var(--s7);}
+  .btn.onDark{background:var(--safety-orange);color:var(--on-orange);}
+  .btn.onOrange{background:var(--space-black);color:var(--off-white);}
+  .btn.onLight{background:var(--space-black);color:var(--off-white);}
+  .btn:hover{transform:translateY(-2px);}
+  .btn{transition:transform .16s ease;}
+
+  /* Numbered service slabs, one per screen-ish. */
+  .slab{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s7);align-items:start;}
+  .slab .n{font-family:var(--font-display);font-size:clamp(40px,7vw,92px);line-height:.9;opacity:.28;}
+  .slab h2{font-family:var(--font-header);font-weight:900;font-stretch:112%;
+    text-transform:uppercase;letter-spacing:.01em;
+    font-size:clamp(26px,4.4vw,54px);line-height:1.02;margin:0 0 var(--s5);}
+  .slab p{font-size:clamp(16px,1.8vw,20px);max-width:26em;margin:0;}
+  .panel.orange .slab p{color:rgba(29,29,31,.8);}
+  .panel.light .slab p{color:#3a3a40;}
+  .panel:not(.orange):not(.light) .slab p{color:#c2c2c9;}
+
+  .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s7);margin-top:var(--s8);}
+  .row h4{font-family:var(--font-header);text-transform:uppercase;font-size:13px;
+    letter-spacing:var(--track-header);font-weight:800;margin:0 0 var(--s2);}
+  .row p{margin:0;font-size:15.5px;}
+  .panel.light .row p{color:#45454b;}
+
+  .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
+    padding:var(--s5) 0;border-top:2px solid currentColor;text-decoration:none;
+    font-family:var(--font-header);text-transform:uppercase;font-weight:700;
+    letter-spacing:var(--track-header);font-size:clamp(15px,2vw,22px);}
+  .art .d{font-size:12px;opacity:.6;white-space:nowrap;}
+  .soon{padding:var(--s5) 0;border-top:2px solid currentColor;font-size:14px;opacity:.65;}
+
+  .meta{display:flex;gap:var(--s7);flex-wrap:wrap;margin-top:var(--s7);
+    font-family:var(--font-header);font-size:12px;text-transform:uppercase;
+    letter-spacing:.14em;}
+  .meta b{display:block;font-weight:400;opacity:.6;margin-bottom:3px;}
+
+  footer .wrap{display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+    padding-top:var(--s5);padding-bottom:var(--s5);font-size:12px;color:var(--muted-on-dark);}
+
+  @media (max-width:820px){
+    .panel{padding:var(--s8) 0;}
+    .slab{grid-template-columns:minmax(0,1fr);gap:var(--s3);}
+    .slab .n{opacity:.4;}
+    .row{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+  }
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="brand" href="#top"><img class="brand-mark" src="../assets/logo-mark.png" alt=""><span class="brand-name">Team Dub Labs</span></a>
+  <nav class="u-header"><a href="#work">Work</a><a href="#how">How</a><a href="#writing">Writing</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<div class="panel"><div class="wrap">
+  <p class="tag">AI · Automation · Software</p>
+  <h1 class="mega">Built<br>to spec</h1>
+  <p class="sub">We put AI to work, automate the workflows that eat your week, and build the software you can't buy off the shelf.</p>
+  <a class="btn onDark" href="#contact">Start a project</a>
+</div></div>
+
+<div class="panel orange" id="work"><div class="wrap">
+  <div class="slab">
+    <span class="n">01</span>
+    <div>
+      <h2>AI<br>Implementation</h2>
+      <p>You know AI should be doing something in your business. We work out what, prove it on a narrow slice, and put it into production with the guardrails and evaluation needed to keep it honest.</p>
+    </div>
+  </div>
+</div></div>
+
+<div class="panel"><div class="wrap">
+  <div class="slab">
+    <span class="n">02</span>
+    <div>
+      <h2>Workflow<br>Automation</h2>
+      <p>The repetitive work that eats your week. Sometimes that needs AI. Often it just needs a well-built integration between four systems you already pay for. We'll tell you which.</p>
+    </div>
+  </div>
+</div></div>
+
+<div class="panel light"><div class="wrap">
+  <div class="slab">
+    <span class="n">03</span>
+    <div>
+      <h2>Custom<br>Software</h2>
+      <p>For when the off-the-shelf tool doesn't fit, and bending the business around it costs more than building the right thing. Designed, built, documented, handed over.</p>
+    </div>
+  </div>
+  <div class="row" id="how">
+    <div><h4>1 — Scope</h4><p>A paid discovery. We tell you what's worth doing — including when the answer is "don't."</p></div>
+    <div><h4>2 — Prove</h4><p>A working slice on your real data, in weeks. You watch it run before committing.</p></div>
+    <div><h4>3 — Ship</h4><p>Into production, on infrastructure you control, documented and handed over.</p></div>
+  </div>
+</div></div>
+
+<div class="panel"><div class="wrap">
+  <p class="tag">Who you're hiring</p>
+  <h2 class="mega" style="font-size:clamp(30px,6vw,72px);">We run it too</h2>
+  <p class="sub">Our own operations sit on a self-hosted stack — local model inference, agent orchestration, an append-only audit trail — running in production daily, not as a demo. If we recommend it, we're already running it.</p>
+  <div class="meta">
+    <span><b>Principal</b>Wes — Founder</span>
+    <span><b>Entity</b>Team Dub Labs Ltd</span>
+    <span><b>Based</b>Regina, SK</span>
+  </div>
+</div></div>
+
+<div class="panel light" id="writing"><div class="wrap">
+  <p class="tag">Writing</p>
+  <a class="art" href="../okf-operational-layer.html"><span>Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d">Jun 2026</span></a>
+  <p class="soon">More in progress.</p>
+</div></div>
+
+<div class="panel orange" id="contact"><div class="wrap">
+  <h2 class="mega" style="font-size:clamp(40px,9vw,120px);">Let's talk</h2>
+  <p class="sub">Tell us what's slow, what's manual, or what you wish existed.</p>
+  <a class="btn onOrange" href="mailto:contact@teamdub.com?subject=Project%20enquiry">contact@teamdub.com</a>
+</div></div>
+
+<footer><div class="wrap"><span>© 2026 Team Dub Labs Ltd</span><span>Direction 07 — Poster</span></div></footer>
+</body>
+</html>

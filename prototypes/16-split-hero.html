@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Team Dub Labs — 16 Split Hero</title>
+<link rel="stylesheet" href="_tokens.css">
+<style>
+  /* 06's split hero — big type left, live diagram right — moved onto
+     Ledger's Off-White. No dark band anywhere; pains become ruled rows. */
+  body{background:var(--off-white);color:var(--space-black);
+    font-family:var(--font-body);font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 var(--s5);}
+
+  header{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);
+    flex-wrap:wrap;padding:var(--s5) 0;}
+  .logo2{height:30px;width:auto;}
+  nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;}
+  nav a{color:var(--space-black);text-decoration:none;}
+  nav a:hover{color:var(--safety-orange);}
+
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+    gap:var(--s7);align-items:center;padding:var(--s8) 0 var(--s9);}
+  .mega{font-family:var(--font-display);font-size:clamp(40px,6.5vw,84px);
+    line-height:.94;letter-spacing:-.02em;margin:0 0 var(--s5);}
+  .lede{font-size:clamp(17px,2vw,21px);color:#3a3a40;margin:0 0 var(--s6);line-height:1.5;}
+  .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:800;font-size:13.5px;text-decoration:none;
+    padding:15px 30px;background:var(--safety-orange);color:var(--on-orange);}
+  .btn:hover{filter:brightness(1.08);}
+
+  .diagram{width:100%;height:auto;display:block;}
+  .node rect{fill:#fff;stroke:var(--white-sink-2);stroke-width:1;}
+  .node text{font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;fill:var(--space-black);}
+  .node.svc rect{stroke:var(--safety-orange);fill:rgba(255,95,21,.07);}
+  .edge{stroke:var(--white-sink-2);stroke-width:1.5;fill:none;}
+  .edge.live{stroke:var(--safety-orange);stroke-dasharray:5 4;animation:flow 1.8s linear infinite;}
+  @keyframes flow{to{stroke-dashoffset:-18;}}
+  .cap{font-family:'Archivo',sans-serif;font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;fill:var(--muted-on-light);}
+
+  section{padding:var(--s8) 0;border-top:1px solid var(--white-sink-2);}
+  .sec-head{font-family:var(--font-header);font-size:11px;text-transform:uppercase;
+    letter-spacing:.2em;color:var(--muted-on-light);margin:0 0 var(--s6);font-weight:700;}
+
+  /* Pains as ruled ledger rows — the dark band, translated to light. */
+  .pains{border-top:3px solid var(--space-black);}
+  .pain{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:var(--s5);
+    padding:var(--s5) 0;border-bottom:1px solid var(--white-sink-2);align-items:baseline;}
+  .pain h3{font-family:var(--font-header);text-transform:uppercase;font-size:14px;
+    letter-spacing:var(--track-header);margin:0;color:var(--space-black);font-weight:800;}
+  .pain h3::before{content:"— ";color:var(--safety-orange);}
+  .pain p{margin:0;font-size:15px;color:#45454b;}
+
+  .offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);}
+  .offer{background:var(--white-sink-1);padding:var(--s6) var(--s5);
+    display:flex;flex-direction:column;border-top:4px solid var(--space-black);}
+  .offer.feature{border-top-color:var(--safety-orange);background:#fff;
+    box-shadow:0 10px 40px rgba(29,29,31,.09);}
+  .offer h3{font-family:var(--font-header);text-transform:uppercase;font-weight:800;
+    font-size:15px;letter-spacing:var(--track-header);margin:0 0 var(--s3);}
+  .offer .for{font-size:13.5px;color:var(--muted-on-light);margin:0 0 var(--s4);}
+  .offer ul{margin:0 0 var(--s5);padding-left:1.1em;font-size:15px;color:#3a3a40;}
+  .offer li{margin-bottom:6px;}
+  .offer .go{margin-top:auto;font-family:var(--font-header);text-transform:uppercase;
+    font-size:12px;letter-spacing:var(--track-header);font-weight:700;text-decoration:none;
+    border-bottom:2px solid var(--safety-orange);padding-bottom:3px;align-self:flex-start;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6);}
+  .step h4{font-family:var(--font-header);text-transform:uppercase;font-size:13px;
+    letter-spacing:var(--track-header);margin:0 0 var(--s2);font-weight:800;}
+  .step h4 span{color:var(--safety-orange);}
+  .step p{margin:0;font-size:15px;color:#45454b;}
+
+  .founder{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--s7);}
+  .founder p{margin:0 0 var(--s4);color:#3a3a40;font-size:17px;}
+  .card{background:var(--space-black);color:var(--off-white);padding:var(--s6);}
+  .card dt{font-family:var(--font-header);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted-on-dark);margin-top:var(--s4);}
+  .card dt:first-child{margin-top:0;}
+  .card dd{margin:2px 0 0;font-size:15px;}
+
+  .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
+    padding:var(--s4) 0;border-bottom:1px solid var(--white-sink-2);text-decoration:none;}
+  .art:hover{background:var(--white-sink-1);}
+  .art .d{font-size:12px;color:var(--muted-on-light);white-space:nowrap;}
+  .soon{padding:var(--s4) 0;font-size:13px;color:var(--muted-on-light);}
+
+  .final{background:var(--safety-orange);color:var(--on-orange);padding:var(--s9) 0;}
+  .final .wrap{display:flex;justify-content:space-between;align-items:center;gap:var(--s6);flex-wrap:wrap;}
+  .final h2{font-family:var(--font-display);font-size:clamp(34px,6vw,72px);margin:0;line-height:.95;}
+  .final .btn{background:var(--space-black);color:var(--off-white);}
+  .final .btn:hover{filter:none;transform:translateY(-2px);}
+  .final .btn{transition:transform .16s ease;}
+
+  footer{border-top:1px solid var(--white-sink-2);}
+  footer .wrap{display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+    padding-top:var(--s6);padding-bottom:var(--s6);font-size:12px;color:var(--muted-on-light);}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:minmax(0,1fr);gap:var(--s6);padding:var(--s6) 0 var(--s7);}
+    .pain{grid-template-columns:minmax(0,1fr);gap:var(--s2);}
+    .offers,.steps{grid-template-columns:minmax(0,1fr);}
+    .founder{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a href="#top"><img class="logo2" src="../assets/logo-horizontal.png" alt="Team Dub Labs"></a>
+    <nav class="u-header">
+      <a href="#pains">Why</a><a href="#offers">Engagements</a>
+      <a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1 class="mega">Built<br>to spec</h1>
+      <p class="lede">We help companies put AI to work, automate the workflows that eat their week, and build the software they can't buy off the shelf.</p>
+      <a class="btn" href="#contact">Start a project</a>
+    </div>
+
+    <svg class="diagram" viewBox="0 0 520 340" role="img" aria-labelledby="dgt">
+      <title id="dgt">Diagram: your existing systems connect through an automation layer and an AI layer into custom software you own</title>
+      <path class="edge" d="M110 56 H210"/>
+      <path class="edge" d="M110 106 H210"/>
+      <path class="edge" d="M110 156 H210"/>
+      <path class="edge live" d="M330 56 C380 56 380 150 410 150"/>
+      <path class="edge live" d="M330 150 H410"/>
+      <path class="edge live" d="M330 244 C380 244 380 150 410 150"/>
+      <path class="edge" d="M110 206 C160 206 160 244 210 244"/>
+      <path class="edge" d="M110 256 H210"/>
+      <text class="cap" x="10" y="26">Systems you already run</text>
+      <g class="node"><rect x="10" y="40" width="100" height="32"/><text x="24" y="60">CRM</text></g>
+      <g class="node"><rect x="10" y="90" width="100" height="32"/><text x="24" y="110">Billing</text></g>
+      <g class="node"><rect x="10" y="140" width="100" height="32"/><text x="24" y="160">Docs</text></g>
+      <g class="node"><rect x="10" y="190" width="100" height="32"/><text x="24" y="210">Email</text></g>
+      <g class="node"><rect x="10" y="240" width="100" height="32"/><text x="24" y="260">Spreadsheets</text></g>
+      <text class="cap" x="210" y="26">What we build</text>
+      <g class="node svc"><rect x="210" y="40" width="120" height="32"/><text x="224" y="60">AI Layer</text></g>
+      <g class="node svc"><rect x="210" y="134" width="120" height="32"/><text x="224" y="154">Automation</text></g>
+      <g class="node svc"><rect x="210" y="228" width="120" height="32"/><text x="224" y="248">Custom Build</text></g>
+      <text class="cap" x="386" y="26">Yours to run</text>
+      <g class="node"><rect x="386" y="134" width="124" height="32"/><text x="400" y="154">Production</text></g>
+      <text class="cap" x="386" y="188">on infrastructure</text>
+      <text class="cap" x="386" y="202">you control</text>
+    </svg>
+  </div>
+
+  <section id="pains">
+    <p class="sec-head">Sound familiar?</p>
+    <div class="pains">
+      <div class="pain"><h3>Pilots that stall</h3><p>An AI proof-of-concept impressed everyone six months ago and still hasn't reached a single real customer.</p></div>
+      <div class="pain"><h3>Copy-paste jobs</h3><p>Someone on your team spends a day a week moving the same data between the same four systems, by hand.</p></div>
+      <div class="pain"><h3>Software that doesn't fit</h3><p>You're paying for a tool and working around it, and the workaround now costs more than the licence.</p></div>
+    </div>
+  </section>
+
+  <section id="offers">
+    <p class="sec-head">Three ways in</p>
+    <div class="offers">
+      <div class="offer">
+        <h3>Scoping</h3>
+        <p class="for">For: "we think there's something here"</p>
+        <ul><li>Systems and workflow mapping</li><li>Where AI helps — and where it doesn't</li><li>Costed recommendation</li><li>Yours to keep either way</li></ul>
+        <a class="go" href="#contact">Start here →</a>
+      </div>
+      <div class="offer feature">
+        <h3>Build</h3>
+        <p class="for">For: "we know what we need"</p>
+        <ul><li>Working slice on real data first</li><li>Then production build</li><li>On infrastructure you control</li><li>Documented handover</li></ul>
+        <a class="go" href="#contact">Talk it through →</a>
+      </div>
+      <div class="offer">
+        <h3>Retained</h3>
+        <p class="for">For: "we need this to keep working"</p>
+        <ul><li>Ongoing capacity</li><li>Monitoring and evaluation</li><li>Iteration as the business shifts</li><li>Named contact, not a queue</li></ul>
+        <a class="go" href="#contact">Ask about terms →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <p class="sec-head">How we work</p>
+    <div class="steps">
+      <div class="step"><h4><span>01</span> Scope</h4><p>A paid discovery. We map the problem, the systems and the constraints, then tell you what's worth doing — including when the answer is "don't."</p></div>
+      <div class="step"><h4><span>02</span> Prove</h4><p>A working slice against your real data, in weeks rather than quarters. You watch it run before committing to a full build.</p></div>
+      <div class="step"><h4><span>03</span> Ship</h4><p>Into production, on infrastructure you control, with the documentation and handover that means you aren't dependent on us.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="sec-head">Who you're hiring</p>
+    <div class="founder">
+      <div>
+        <p>Team Dub Labs runs on the same things we sell. Our own operations sit on a self-hosted stack — local model inference, agent orchestration, an append-only audit trail — that we run in production every day, not as a demo.</p>
+        <p>That's the bar we work to: if we recommend something to you, we're already running it ourselves and we know where it breaks.</p>
+      </div>
+      <dl class="card">
+        <dt>Principal</dt><dd>Wes — Founder</dd>
+        <dt>Entity</dt><dd>Team Dub Labs Ltd</dd>
+        <dt>Based</dt><dd>Regina, Saskatchewan</dd>
+        <dt>Contact</dt><dd>contact@teamdub.com</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="writing">
+    <p class="sec-head">Writing</p>
+    <a class="art" href="../okf-operational-layer.html"><span class="t">Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d">Jun 2026</span></a>
+    <p class="soon">More in progress.</p>
+  </section>
+
+</div>
+
+<div class="final" id="contact"><div class="wrap">
+  <h2 class="u-display">Let's talk</h2>
+  <a class="btn" href="mailto:contact@teamdub.com?subject=Project%20enquiry">contact@teamdub.com</a>
+</div></div>
+
+<footer><div class="wrap"><span>© 2026 Team Dub Labs Ltd</span><span>Direction 16 — Split Hero</span></div></footer>
+</body>
+</html>

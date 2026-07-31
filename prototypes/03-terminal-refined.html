@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Team Dub Labs — 03 Terminal Refined</title>
+<link rel="stylesheet" href="_tokens.css">
+<style>
+  body{background:var(--space-black);color:var(--off-white);
+    font-family:'Space Grotesk',var(--font-body);font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;}
+  .shell{min-height:100vh;background:radial-gradient(120% 70% at 50% -10%, #2a2a2f 0%, var(--space-black) 55%);}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 var(--s5);}
+
+  header{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);
+    flex-wrap:wrap;padding:var(--s5) 0;}
+  .brandline{display:inline-flex;align-items:center;gap:var(--s3);}
+  .led{width:7px;height:7px;border-radius:50%;background:var(--safety-orange);
+    box-shadow:0 0 9px var(--safety-orange);animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .logo{height:24px;width:auto;}
+  nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;}
+  nav a{color:var(--muted-on-dark);text-decoration:none;}
+  nav a:hover{color:var(--safety-orange);}
+
+  .hero{padding:var(--s9) 0 var(--s8);}
+  h1{font-size:clamp(38px,6.8vw,80px);margin:0 0 var(--s5);}
+  .lede{font-size:clamp(17px,2.1vw,21px);max-width:33em;color:#c4c4cb;margin:0 0 var(--s6);}
+
+  /* Boot-log demoted from hero centrepiece to a single status strip. */
+  .status{display:inline-flex;align-items:center;gap:var(--s3);
+    border:1px solid var(--black-raise-2);background:var(--black-raise-1);
+    padding:10px var(--s4);font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;
+    font-size:12.5px;color:var(--muted-on-dark);margin-bottom:var(--s6);
+    max-width:100%;overflow:hidden;}
+  .status b{color:var(--safety-orange);font-weight:500;}
+  .status .cur{color:var(--safety-orange);animation:blink 1.1s steps(1) infinite;}
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+  .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:600;font-size:13px;text-decoration:none;
+    padding:14px 26px;background:var(--safety-orange);color:var(--on-orange);}
+  .btn:hover{filter:brightness(1.12);}
+  .btn.ghost{background:transparent;color:var(--off-white);border:1px solid var(--black-raise-2);}
+  .btn.ghost:hover{border-color:var(--safety-orange);filter:none;}
+  .btns{display:flex;gap:var(--s3);flex-wrap:wrap;}
+
+  section{padding:var(--s8) 0;border-top:1px solid var(--black-raise-2);}
+  .sec-head{font-family:var(--font-header);font-size:11px;text-transform:uppercase;
+    letter-spacing:.2em;color:var(--muted-on-dark);margin:0 0 var(--s6);font-weight:600;
+    display:flex;align-items:center;gap:var(--s4);}
+  .sec-head::after{content:"";flex:1;height:1px;background:var(--black-raise-2);}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);}
+  .card{border:1px solid var(--black-raise-2);background:var(--black-raise-1);
+    padding:var(--s6) var(--s5);transition:border-color .18s;}
+  .card:hover{border-color:rgba(255,95,21,.45);}
+  .card .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--safety-orange);}
+  .card h3{font-family:var(--font-header);text-transform:uppercase;font-weight:700;
+    font-size:15px;letter-spacing:var(--track-header);margin:var(--s3) 0;}
+  .card p{margin:0;font-size:14.5px;color:#b4b4bb;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6);}
+  .step h4{font-family:var(--font-header);text-transform:uppercase;font-size:13px;
+    letter-spacing:var(--track-header);margin:0 0 var(--s2);}
+  .step h4 span{color:var(--safety-orange);}
+  .step p{margin:0;font-size:14.5px;color:#b4b4bb;}
+
+  .founder{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:var(--s7);}
+  .founder p{margin:0 0 var(--s4);color:#c4c4cb;}
+  .plate{border:1px solid var(--black-raise-2);background:var(--black-raise-1);padding:var(--s5);
+    font-family:ui-monospace,Menlo,monospace;font-size:13px;align-self:start;}
+  .plate div{display:flex;justify-content:space-between;gap:var(--s4);padding:6px 0;}
+  .plate span:first-child{color:var(--muted-on-dark);}
+
+  .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
+    padding:var(--s4) 0;border-bottom:1px solid var(--black-raise-2);text-decoration:none;}
+  .art:hover .t{color:var(--safety-orange);}
+  .art .d{font-size:12px;color:var(--muted-on-dark);white-space:nowrap;}
+  .soon{padding:var(--s4) 0;font-size:13px;color:var(--muted-on-dark);}
+
+  .contact{display:flex;justify-content:space-between;align-items:center;gap:var(--s6);flex-wrap:wrap;}
+  .contact h2{font-family:var(--font-display);font-size:clamp(26px,4.2vw,46px);margin:0;}
+
+  footer{padding:var(--s6) 0;border-top:1px solid var(--black-raise-2);
+    display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+    font-size:12px;color:var(--muted-on-dark);}
+
+  @media (max-width:860px){
+    .cards,.steps{grid-template-columns:minmax(0,1fr);}
+    .founder{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+    .hero{padding:var(--s7) 0 var(--s6);}
+    .status{font-size:11px;}
+  }
+</style>
+</head>
+<body>
+<div class="shell"><div class="wrap">
+
+  <header>
+    <span class="brandline"><span class="led"></span><a class="brand" href="#top"><img class="brand-mark" src="../assets/logo-mark.png" alt=""><span class="brand-name">Team Dub Labs</span></a></span>
+    <nav class="u-header">
+      <a href="#services">Services</a><a href="#process">Process</a>
+      <a href="#writing">Writing</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="status"><b>&gt;</b> systems nominal — 3 engagements shipping<span class="cur">_</span></div>
+    <h1 class="u-display">Built to spec</h1>
+    <p class="lede">We help companies put AI to work, automate the workflows that eat their week, and build the software they can't buy off the shelf.</p>
+    <div class="btns">
+      <a class="btn" href="#contact">Start a project</a>
+      <a class="btn ghost" href="#services">What we do</a>
+    </div>
+  </div>
+
+  <section id="services">
+    <p class="sec-head">What we do</p>
+    <div class="cards">
+      <article class="card"><span class="k">[01]</span><h3>AI Implementation</h3>
+        <p>You know AI should be doing something in your business. We work out what, prove it on a narrow slice, and put it into production with the guardrails and evaluation needed to keep it honest.</p></article>
+      <article class="card"><span class="k">[02]</span><h3>Workflow Automation</h3>
+        <p>The repetitive work that eats your week. Sometimes that needs AI. Often it just needs a well-built integration between four systems you already pay for. We'll tell you which.</p></article>
+      <article class="card"><span class="k">[03]</span><h3>Custom Software</h3>
+        <p>For when the off-the-shelf tool doesn't fit, and bending the business around it costs more than building the right thing. Designed, built, documented, handed over.</p></article>
+    </div>
+  </section>
+
+  <section id="process">
+    <p class="sec-head">How we work</p>
+    <div class="steps">
+      <div class="step"><h4><span>01</span> — Scope</h4><p>A paid discovery. We map the problem, the systems and the constraints, then tell you what's worth doing — including when the answer is "don't."</p></div>
+      <div class="step"><h4><span>02</span> — Prove</h4><p>A working slice against your real data, in weeks rather than quarters. You watch it run before committing to a full build.</p></div>
+      <div class="step"><h4><span>03</span> — Ship</h4><p>Into production, on infrastructure you control, with the documentation and handover that means you aren't dependent on us.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="sec-head">Who you're hiring</p>
+    <div class="founder">
+      <div>
+        <p>Team Dub Labs runs on the same things we sell. Our own operations sit on a self-hosted stack — local model inference, agent orchestration, an append-only audit trail — that we run in production every day, not as a demo.</p>
+        <p>That's the bar we work to: if we recommend something to you, we're already running it ourselves and we know where it breaks.</p>
+      </div>
+      <div class="plate">
+        <div><span>principal</span><span>Wes</span></div>
+        <div><span>entity</span><span>Team Dub Labs Ltd</span></div>
+        <div><span>based</span><span>Regina, SK</span></div>
+        <div><span>email</span><span>contact@teamdub.com</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <p class="sec-head">Writing</p>
+    <a class="art" href="../okf-operational-layer.html"><span class="t">Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d">Jun 2026</span></a>
+    <p class="soon">More in progress.</p>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Let's talk</h2>
+      <a class="btn" href="mailto:contact@teamdub.com?subject=Project%20enquiry">contact@teamdub.com</a>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Team Dub Labs Ltd</span><span>Direction 03 — Terminal Refined</span></footer>
+
+</div></div>
+</body>
+</html>

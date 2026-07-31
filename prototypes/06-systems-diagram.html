@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Team Dub Labs — 06 Systems Diagram</title>
+<link rel="stylesheet" href="_tokens.css">
+<style>
+  body{background:var(--space-black);color:var(--off-white);
+    font-family:var(--font-body);font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 var(--s5);}
+
+  header{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);
+    flex-wrap:wrap;padding:var(--s5) 0;}
+  .logo{height:24px;width:auto;}
+  nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;}
+  nav a{color:var(--muted-on-dark);text-decoration:none;}
+  nav a:hover{color:var(--safety-orange);}
+
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+    gap:var(--s7);align-items:center;padding:var(--s8) 0;}
+  h1{font-size:clamp(34px,5.2vw,60px);margin:0 0 var(--s5);}
+  .lede{font-size:clamp(17px,2vw,20px);color:#c4c4cb;margin:0 0 var(--s6);}
+  .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:700;font-size:13px;text-decoration:none;
+    padding:14px 28px;background:var(--safety-orange);color:var(--on-orange);}
+  .btn:hover{filter:brightness(1.12);}
+
+  /* --- the diagram --- */
+  .diagram{width:100%;height:auto;}
+  .node rect{fill:var(--black-raise-1);stroke:var(--black-raise-2);stroke-width:1;}
+  .node text{font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;fill:var(--off-white);}
+  .node.svc rect{stroke:var(--safety-orange);fill:rgba(255,95,21,.08);}
+  .node.svc text{fill:var(--safety-orange);}
+  .edge{stroke:var(--black-raise-2);stroke-width:1.5;fill:none;}
+  .edge.live{stroke:var(--safety-orange);stroke-dasharray:5 4;
+    animation:flow 1.8s linear infinite;}
+  @keyframes flow{to{stroke-dashoffset:-18;}}
+  .cap{font-family:'Archivo',sans-serif;font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;fill:var(--muted-on-dark);}
+
+  section{padding:var(--s8) 0;border-top:1px solid var(--black-raise-2);}
+  .sec-head{font-family:var(--font-header);font-size:11px;text-transform:uppercase;
+    letter-spacing:.2em;color:var(--muted-on-dark);margin:0 0 var(--s6);font-weight:600;}
+
+  .layers{display:grid;gap:var(--s4);}
+  .layer{display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s5);
+    border:1px solid var(--black-raise-2);background:var(--black-raise-1);
+    padding:var(--s5);transition:border-color .18s,transform .18s;}
+  .layer:hover{border-color:rgba(255,95,21,.5);transform:translateX(4px);}
+  .layer .glyph{width:32px;height:32px;border:1.5px solid var(--safety-orange);
+    display:grid;place-items:center;font-family:var(--font-header);font-size:12px;
+    font-weight:800;color:var(--safety-orange);}
+  .layer h3{font-family:var(--font-header);text-transform:uppercase;font-weight:700;
+    font-size:15px;letter-spacing:var(--track-header);margin:0 0 var(--s2);}
+  .layer p{margin:0;font-size:15px;color:#b4b4bb;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6);}
+  .step h4{font-family:var(--font-header);text-transform:uppercase;font-size:13px;
+    letter-spacing:var(--track-header);margin:0 0 var(--s2);}
+  .step h4 span{color:var(--safety-orange);}
+  .step p{margin:0;font-size:15px;color:#b4b4bb;}
+
+  .founder{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:var(--s7);}
+  .founder p{margin:0 0 var(--s4);color:#c4c4cb;}
+  .plate{border:1px solid var(--black-raise-2);padding:var(--s5);align-self:start;}
+  .plate dt{font-family:var(--font-header);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted-on-dark);margin-top:var(--s4);}
+  .plate dt:first-child{margin-top:0;}
+  .plate dd{margin:2px 0 0;font-size:15px;}
+
+  .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
+    padding:var(--s4) 0;border-bottom:1px solid var(--black-raise-2);text-decoration:none;}
+  .art:hover .t{color:var(--safety-orange);}
+  .art .d{font-size:12px;color:var(--muted-on-dark);white-space:nowrap;}
+  .soon{padding:var(--s4) 0;font-size:13px;color:var(--muted-on-dark);}
+
+  .contact{display:flex;justify-content:space-between;align-items:center;gap:var(--s6);flex-wrap:wrap;}
+  .contact h2{font-family:var(--font-display);font-size:clamp(24px,3.8vw,42px);margin:0;}
+  footer{padding:var(--s6) 0;border-top:1px solid var(--black-raise-2);
+    display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+    font-size:12px;color:var(--muted-on-dark);}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:minmax(0,1fr);gap:var(--s6);padding:var(--s7) 0;}
+    .steps{grid-template-columns:minmax(0,1fr);}
+    .founder{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="#top"><img class="brand-mark" src="../assets/logo-mark.png" alt=""><span class="brand-name">Team Dub Labs</span></a>
+    <nav class="u-header">
+      <a href="#layers">Services</a><a href="#process">Process</a>
+      <a href="#writing">Writing</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1 class="u-display">Built to spec</h1>
+      <p class="lede">We help companies put AI to work, automate the workflows that eat their week, and build the software they can't buy off the shelf.</p>
+      <a class="btn" href="#contact">Start a project</a>
+    </div>
+
+    <svg class="diagram" viewBox="0 0 520 340" role="img" aria-labelledby="dgt">
+      <title id="dgt">Diagram: your existing systems connect through an automation layer and an AI layer into custom software you own</title>
+
+      <!-- edges -->
+      <path class="edge" d="M110 56 H210"/>
+      <path class="edge" d="M110 106 H210"/>
+      <path class="edge" d="M110 156 H210"/>
+      <path class="edge live" d="M330 56 C380 56 380 150 410 150"/>
+      <path class="edge live" d="M330 150 H410"/>
+      <path class="edge live" d="M330 244 C380 244 380 150 410 150"/>
+      <path class="edge" d="M110 206 C160 206 160 244 210 244"/>
+      <path class="edge" d="M110 256 H210"/>
+
+      <!-- your systems -->
+      <text class="cap" x="10" y="26">Systems you already run</text>
+      <g class="node"><rect x="10" y="40" width="100" height="32"/><text x="24" y="60">CRM</text></g>
+      <g class="node"><rect x="10" y="90" width="100" height="32"/><text x="24" y="110">Billing</text></g>
+      <g class="node"><rect x="10" y="140" width="100" height="32"/><text x="24" y="160">Docs</text></g>
+      <g class="node"><rect x="10" y="190" width="100" height="32"/><text x="24" y="210">Email</text></g>
+      <g class="node"><rect x="10" y="240" width="100" height="32"/><text x="24" y="260">Spreadsheets</text></g>
+
+      <!-- what we build -->
+      <text class="cap" x="210" y="26">What we build</text>
+      <g class="node svc"><rect x="210" y="40" width="120" height="32"/><text x="224" y="60">AI Layer</text></g>
+      <g class="node svc"><rect x="210" y="134" width="120" height="32"/><text x="224" y="154">Automation</text></g>
+      <g class="node svc"><rect x="210" y="228" width="120" height="32"/><text x="224" y="248">Custom Build</text></g>
+
+      <!-- outcome -->
+      <text class="cap" x="386" y="26">Yours to run</text>
+      <g class="node"><rect x="386" y="134" width="124" height="32"/><text x="400" y="154">Production</text></g>
+      <text class="cap" x="386" y="188">on infrastructure</text>
+      <text class="cap" x="386" y="202">you control</text>
+    </svg>
+  </div>
+
+  <section id="layers">
+    <p class="sec-head">What we do</p>
+    <div class="layers">
+      <div class="layer">
+        <span class="glyph">AI</span>
+        <div><h3>AI Implementation</h3><p>You know AI should be doing something in your business. We work out what, prove it on a narrow slice, and put it into production with the guardrails and evaluation needed to keep it honest.</p></div>
+      </div>
+      <div class="layer">
+        <span class="glyph">WF</span>
+        <div><h3>Workflow Automation</h3><p>The repetitive work that eats your week. Sometimes that needs AI. Often it just needs a well-built integration between four systems you already pay for. We'll tell you which.</p></div>
+      </div>
+      <div class="layer">
+        <span class="glyph">SW</span>
+        <div><h3>Custom Software</h3><p>For when the off-the-shelf tool doesn't fit, and bending the business around it costs more than building the right thing. Designed, built, documented, handed over.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <p class="sec-head">How we work</p>
+    <div class="steps">
+      <div class="step"><h4><span>01</span> Scope</h4><p>A paid discovery. We map the problem, the systems and the constraints, then tell you what's worth doing — including when the answer is "don't."</p></div>
+      <div class="step"><h4><span>02</span> Prove</h4><p>A working slice against your real data, in weeks rather than quarters. You watch it run before committing to a full build.</p></div>
+      <div class="step"><h4><span>03</span> Ship</h4><p>Into production, on infrastructure you control, with the documentation and handover that means you aren't dependent on us.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="sec-head">Who you're hiring</p>
+    <div class="founder">
+      <div>
+        <p>Team Dub Labs runs on the same things we sell. Our own operations sit on a self-hosted stack — local model inference, agent orchestration, an append-only audit trail — that we run in production every day, not as a demo.</p>
+        <p>That's the bar we work to: if we recommend something to you, we're already running it ourselves and we know where it breaks.</p>
+      </div>
+      <dl class="plate">
+        <dt>Principal</dt><dd>Wes — Founder</dd>
+        <dt>Entity</dt><dd>Team Dub Labs Ltd</dd>
+        <dt>Based</dt><dd>Regina, Saskatchewan</dd>
+        <dt>Contact</dt><dd>contact@teamdub.com</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="writing">
+    <p class="sec-head">Writing</p>
+    <a class="art" href="../okf-operational-layer.html"><span class="t">Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d">Jun 2026</span></a>
+    <p class="soon">More in progress.</p>
+  </section>
+
+  <section id="contact">
+    <div class="contact"><h2>Let's talk</h2>
+      <a class="btn" href="mailto:contact@teamdub.com?subject=Project%20enquiry">contact@teamdub.com</a></div>
+  </section>
+
+  <footer><span>© 2026 Team Dub Labs Ltd</span><span>Direction 06 — Systems Diagram</span></footer>
+
+</div>
+</body>
+</html>
