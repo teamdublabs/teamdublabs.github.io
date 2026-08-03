@@ -1,7 +1,7 @@
 /* Self-hosted brand fonts — no third-party requests at runtime.
    (Phase 2: promote this to a direct <link> in each page to drop
    the extra serial round-trip @import costs.) */
-@import url('../assets/fonts.css');
+@import url('./fonts.css');
 
 /* ============================================================
    Team Dub Labs Ltd — shared brand tokens

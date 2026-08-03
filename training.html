@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intro to AI Training · Team Dub Labs</title>
+<meta name="description" content="A 2-hour, in-person Intro to AI session for your team. Plain-language, live demos, real business tasks. Regina & Southern SK, two dates this fall.">
+<meta property="og:title" content="Intro to AI Training · Team Dub Labs">
+<meta property="og:description" content="A 2-hour, in-person Intro to AI session for your team. Regina & Southern SK, two dates this fall, book fast.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teamdub.com/training.html">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://teamdub.com/training.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Intro to AI",
+  "description": "A 2-hour, in-person AI literacy training session for business teams in Regina and Southern Saskatchewan.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Team Dub Labs Ltd",
+    "sameAs": "https://teamdub.com/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1500",
+    "priceCurrency": "CAD",
+    "availability": "https://schema.org/LimitedAvailability"
+  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "courseMode": "onsite",
+      "startDate": "2026-10-05",
+      "location": { "@type": "Place", "address": "Regina & Southern Saskatchewan, Canada" }
+    },
+    {
+      "@type": "CourseInstance",
+      "courseMode": "onsite",
+      "startDate": "2026-10-19",
+      "location": { "@type": "Place", "address": "Regina & Southern Saskatchewan, Canada" }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+  body{background:var(--off-white);color:var(--space-black);
+    font-family:var(--font-body);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 var(--s5);}
+
+  header .wrap{display:flex;justify-content:space-between;align-items:center;
+    gap:var(--s4);flex-wrap:wrap;padding-top:var(--s4);padding-bottom:var(--s4);}
+  nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;}
+  nav a{color:var(--space-black);text-decoration:none;}
+  nav a:hover{color:var(--safety-orange);}
+
+  .panel{padding:var(--s10) 0;}
+  .panel:first-of-type{padding-top:var(--s7);}
+  .panel.orange{background:var(--safety-orange);color:var(--on-orange);}
+  .panel.dark{background:var(--space-black);color:var(--off-white);}
+
+  .mega{font-family:var(--font-display);font-size:clamp(40px,9vw,120px);
+    line-height:.92;letter-spacing:-.02em;margin:0;}
+  .sub{font-size:clamp(18px,2.4vw,26px);max-width:24em;margin:var(--s6) 0 0;line-height:1.4;}
+  .panel:not(.orange):not(.dark) .sub{color:#3a3a40;}
+  .panel.orange .sub{color:rgba(29,29,31,.82);}
+  .panel.dark .sub{color:#c2c2c9;}
+
+  .tag{font-family:var(--font-header);font-size:12px;text-transform:uppercase;
+    letter-spacing:.24em;font-weight:800;margin:0 0 var(--s6);}
+  .panel:not(.orange):not(.dark) .tag{color:var(--muted-on-light);}
+  .panel.orange .tag{color:rgba(29,29,31,.65);}
+  .panel.dark .tag{color:var(--safety-orange);}
+
+  .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:800;font-size:14px;text-decoration:none;
+    padding:18px 36px;margin-top:var(--s7);transition:transform .16s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn.onLight{background:var(--safety-orange);color:var(--on-orange);}
+  .btn.onOrange{background:var(--space-black);color:var(--off-white);}
+  .btn.onDark{background:var(--safety-orange);color:var(--on-orange);}
+
+  .slab{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s7);align-items:start;}
+  .slab .n{font-family:var(--font-display);font-size:clamp(40px,7vw,92px);line-height:.9;opacity:.28;}
+  .slab h2{font-family:var(--font-header);font-weight:900;font-stretch:112%;
+    text-transform:uppercase;letter-spacing:.01em;
+    font-size:clamp(26px,4.4vw,54px);line-height:1.02;margin:0 0 var(--s5);}
+  .slab p{font-size:clamp(16px,1.8vw,20px);max-width:26em;margin:0;}
+  .panel:not(.orange):not(.dark) .slab p{color:#3a3a40;}
+  .panel.orange .slab p{color:rgba(29,29,31,.8);}
+  .panel.dark .slab p{color:#c2c2c9;}
+
+  .agenda-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:var(--s5);
+    padding:var(--s5) 0;border-top:1px solid var(--white-sink-2);}
+  .agenda-row:first-child{border-top:none;}
+  .agenda-row .t{font-family:var(--font-header);font-weight:800;font-size:13px;
+    text-transform:uppercase;letter-spacing:.06em;color:var(--muted-on-light);}
+  .agenda-row p{margin:0;font-size:15.5px;color:#3a3a40;}
+
+  .row3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s7);margin-top:var(--s8);}
+  .row3 h4{font-family:var(--font-header);text-transform:uppercase;font-size:14px;
+    letter-spacing:var(--track-header);font-weight:800;margin:0 0 var(--s3);}
+  .row3 p{margin:0;font-size:16px;}
+  .panel.dark .row3 p{color:#c2c2c9;}
+
+  .dateRow{display:flex;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s7);}
+  .dateRow .btn{margin-top:0;}
+
+  .meta{display:flex;gap:var(--s7);flex-wrap:wrap;margin-top:var(--s7);
+    font-family:var(--font-header);font-size:12px;text-transform:uppercase;
+    letter-spacing:.14em;}
+  .meta b{display:block;font-weight:400;opacity:.6;margin-bottom:3px;}
+
+  footer{border-top:1px solid var(--white-sink-2);}
+  footer .wrap{display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+    padding-top:var(--s6);padding-bottom:var(--s6);font-size:12px;color:var(--muted-on-light);}
+
+  @media (max-width:820px){
+    .panel{padding:var(--s8) 0;}
+    .slab{grid-template-columns:minmax(0,1fr);gap:var(--s3);}
+    .slab .n{opacity:.4;}
+    .row3{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+    .agenda-row{grid-template-columns:minmax(0,1fr);gap:var(--s2);}
+  }
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-mark-new.png" alt=""><span class="brand-name">Team Dub Labs</span></a>
+  <nav class="u-header"><a href="index.html#work">Work</a><a href="index.html#how">How</a><a href="index.html#writing">Writing</a><a href="training.html">Training</a><a href="index.html#contact">Contact</a></nav>
+</div></header>
+
+<div class="panel"><div class="wrap">
+  <p class="tag">AI Training</p>
+  <h1 class="mega">Intro to<br>AI</h1>
+  <p class="sub">A 2-hour, in-person session that gets your whole team thinking clearly about AI, on your actual work, not hypotheticals.</p>
+  <a class="btn onLight" href="#dates">See dates &amp; book</a>
+</div></div>
+
+<div class="panel orange"><div class="wrap">
+  <div class="slab">
+    <span class="n">01</span>
+    <div>
+      <h2>Who it's<br>for</h2>
+      <p>Regina and Southern Saskatchewan business owners and teams curious about AI but not sure where to start. No technical background needed, and nobody needs to bring a laptop.</p>
+    </div>
+  </div>
+</div></div>
+
+<div class="panel"><div class="wrap">
+  <p class="tag">What's covered</p>
+  <div class="agenda-row"><span class="t">0:00&ndash;0:15</span><p>What AI actually is right now, no hype: what it's good at, what it isn't, in plain terms for your business.</p></div>
+  <div class="agenda-row"><span class="t">0:15&ndash;1:00</span><p>Live demos on real business tasks: drafting, summarizing, research, customer communication, basic automation. Presenter-led, no laptops or participation required.</p></div>
+  <div class="agenda-row"><span class="t">1:00&ndash;1:20</span><p>Common pitfalls and privacy basics: what not to paste into a public AI tool, and when it matters.</p></div>
+  <div class="agenda-row"><span class="t">1:20&ndash;1:50</span><p>Q&amp;A, the one interactive block.</p></div>
+  <div class="agenda-row"><span class="t">1:50&ndash;2:00</span><p>Wrap-up and a take-home cheat sheet.</p></div>
+</div></div>
+
+<div class="panel dark"><div class="wrap">
+  <p class="tag">The details</p>
+  <div class="row3">
+    <div><h4>Included, every session</h4><p>A written summary of what we covered and recommended for your business, plus a free 30-minute follow-up call to talk through next steps.</p></div>
+    <div><h4>What we need from you</h4><p>A room and a screen or projector. Any team size, the room's the only limit.</p></div>
+  </div>
+</div></div>
+
+<div class="panel orange" id="dates"><div class="wrap">
+  <p class="tag">Dates &amp; price</p>
+  <h2 class="mega" style="font-size:clamp(32px,7vw,88px);">Book fast</h2>
+  <p class="sub">Only two dates left this fall. First come, first served.</p>
+  <div class="dateRow">
+    <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%205%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request October 5</a>
+    <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%2019%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request October 19</a>
+  </div>
+  <p class="sub" style="margin-top:var(--s7);">$1,500 flat. Your whole team, no per-head fees.</p>
+</div></div>
+
+<div class="panel" style="padding-bottom:var(--s8);"><div class="wrap">
+  <p class="tag">Thinking bigger?</p>
+  <h2 class="mega" style="font-size:clamp(32px,7vw,88px);">Go<br>further</h2>
+  <p class="sub">If this sparks something bigger for your business, let's talk about what a full AI or automation engagement could look like.</p>
+  <a class="btn onLight" href="index.html#contact">Talk to us</a>
+</div></div>
+
+<footer><div class="wrap"><span>© 2026 Team Dub Labs Ltd</span><span>Regina, SK</span></div></footer>
+</body>
+</html>
