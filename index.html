@@ -32,9 +32,14 @@
   header .wrap{display:flex;justify-content:space-between;align-items:center;
     gap:var(--s4);flex-wrap:wrap;padding-top:var(--s4);padding-bottom:var(--s4);}
   nav{display:flex;gap:var(--s5);flex-wrap:wrap;font-size:12px;}
-  nav a{color:var(--space-black);text-decoration:none;}
+  /* Padding grows the tap target to ~44px; the negative margin cancels
+     it out of the layout so the header renders exactly as before. */
+  nav a{color:var(--space-black);text-decoration:none;display:inline-block;
+    padding:16px 10px;margin:-16px -10px;}
   nav a:hover{text-decoration:underline;text-decoration-color:var(--safety-orange);
     text-decoration-thickness:2px;text-underline-offset:5px;}
+  a:focus-visible{outline:3px solid var(--space-black);outline-offset:3px;}
+  .panel.dark a:focus-visible{outline-color:var(--off-white);}
 
   .panel{padding:var(--s10) 0;}
   main > .panel:first-child{padding-top:var(--s7);}
@@ -56,7 +61,8 @@
 
   .btn{display:inline-block;font-family:var(--font-header);text-transform:uppercase;
     letter-spacing:var(--track-header);font-weight:800;font-size:14px;text-decoration:none;
-    padding:18px 36px;margin-top:var(--s7);transition:transform .16s ease;}
+    padding:18px 36px;margin-top:var(--s7);transition:transform .16s ease;
+    max-width:100%;overflow-wrap:anywhere;}
   .btn:hover{transform:translateY(-2px);}
   .btn.onLight{background:var(--safety-orange);color:var(--on-orange);}
   .btn.onOrange{background:var(--space-black);color:var(--off-white);}
@@ -73,8 +79,21 @@
   .panel.dark .slab p{color:#c2c2c9;}
 
   /* Diagram panel: vertical funnel. Many tools converge downward
-     into one production system. */
+     into one production system. Two renderings of the same diagram:
+     the wide one scales its labels below readability under ~560px,
+     so a portrait variant takes over there. */
   .diagram{width:100%;height:auto;display:block;margin-top:var(--s7);}
+  .diagram.portrait{display:none;max-width:400px;}
+  /* Larger source type: the portrait viewBox is 320 wide, so on a
+     320px screen these render near 1:1 (~11px+ effective). */
+  .diagram.portrait .node text{font-size:13px;}
+  .diagram.portrait .node.svc text{font-size:13.5px;}
+  .diagram.portrait .node.prod text{font-size:14px;}
+  .diagram.portrait .cap{font-size:11px;}
+  @media (max-width:560px){
+    .diagram.landscape{display:none;}
+    .diagram.portrait{display:block;}
+  }
   .node rect{fill:var(--black-raise-1);stroke:#45454d;stroke-width:1.5;}
   .node text{font-family:'Archivo',sans-serif;font-size:10px;font-weight:700;
     text-transform:uppercase;letter-spacing:.06em;fill:var(--off-white);}
@@ -90,7 +109,8 @@
     text-transform:uppercase;fill:var(--muted-on-dark);}
   .cap.halo{stroke:var(--space-black);stroke-width:4px;paint-order:stroke;}
 
-  .row3{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s6);margin-top:var(--s8);}
+  .row3{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s6);margin-top:var(--s8);
+    list-style:none;padding-left:0;margin-bottom:0;}
   .row3 h3{font-family:var(--font-header);text-transform:uppercase;font-size:13px;
     letter-spacing:var(--track-header);font-weight:800;margin:0 0 var(--s2);}
   .row3 p{margin:0;font-size:15.5px;color:#45454b;}
@@ -176,8 +196,9 @@
       <p>For when the off-the-shelf tool doesn't fit, and bending the business around it costs more than building the right thing. Designed, built, and handed off clean.</p>
     </div>
   </div>
-  <svg class="diagram" viewBox="0 0 520 396" role="img" aria-labelledby="dgt">
+  <svg class="diagram landscape" viewBox="0 0 520 396" role="img" aria-labelledby="dgt" aria-describedby="dgd">
     <title id="dgt">Funnel diagram: your existing systems flow down through an AI layer, automation and custom software, converging into one production system on your infrastructure or ours</title>
+    <desc id="dgd">Top row, systems you already run: Email, Spreadsheets, Docs and CRM. Arrows connect them to a middle row, what we build: AI Layer, Automation and Custom Build. Those three converge into a single bottom box, yours to run: Production, on your infrastructure or ours.</desc>
     <path class="edge" d="M66 68 C66 118 95 118 95 166"/>
     <path class="edge" d="M66 68 C66 118 260 118 260 166"/>
     <path class="edge" d="M195 68 C195 118 95 118 95 166"/>
@@ -200,6 +221,28 @@
     <g class="node prod"><rect x="130" y="300" width="260" height="44"/><text x="260" y="327" text-anchor="middle">Production</text></g>
     <text class="cap" x="260" y="372" text-anchor="middle">on your infrastructure or ours</text>
   </svg>
+  <svg class="diagram portrait" viewBox="0 0 320 504" role="img" aria-labelledby="dgt2" aria-describedby="dgd2">
+    <title id="dgt2">Funnel diagram: your existing systems flow down through an AI layer, automation and custom software, converging into one production system on your infrastructure or ours</title>
+    <desc id="dgd2">Top, systems you already run: Email, Spreadsheets, Docs and CRM. Arrows connect them to a middle tier, what we build: AI Layer, Automation and Custom Build. Those three converge into a single bottom box, yours to run: Production, on your infrastructure or ours.</desc>
+    <path class="edge" d="M239 116 V180"/>
+    <path class="edge" d="M81 116 C81 190 160 190 160 252"/>
+    <path class="edge" d="M81 116 C60 200 60 250 81 324"/>
+    <path class="edge live" d="M239 224 C255 300 255 360 250 420"/>
+    <path class="edge live" d="M160 296 C170 340 170 380 165 420"/>
+    <path class="edge live" d="M81 368 C81 400 90 400 90 420"/>
+    <text class="cap" x="6" y="16">Systems you already run</text>
+    <g class="node"><rect x="6" y="28" width="150" height="40"/><text x="19" y="53">Email</text></g>
+    <g class="node"><rect x="164" y="28" width="150" height="40"/><text x="177" y="53">Spreadsheets</text></g>
+    <g class="node"><rect x="6" y="76" width="150" height="40"/><text x="19" y="101">Docs</text></g>
+    <g class="node"><rect x="164" y="76" width="150" height="40"/><text x="177" y="101">CRM</text></g>
+    <text class="cap halo" x="6" y="172">What we build</text>
+    <g class="node svc"><rect x="164" y="180" width="150" height="44"/><text x="178" y="207">AI Layer</text></g>
+    <g class="node svc"><rect x="85" y="252" width="150" height="44"/><text x="99" y="279">Automation</text></g>
+    <g class="node svc"><rect x="6" y="324" width="150" height="44"/><text x="20" y="351">Custom Build</text></g>
+    <text class="cap halo" x="6" y="408">Yours to run</text>
+    <g class="node prod"><rect x="40" y="420" width="240" height="48"/><text x="160" y="449" text-anchor="middle">Production</text></g>
+    <text class="cap" x="160" y="494" text-anchor="middle">on your infrastructure or ours</text>
+  </svg>
 </div></section>
 
 <section class="panel callout"><div class="wrap">
@@ -211,12 +254,12 @@
 
 <section class="panel"><div class="wrap">
   <h2 class="tag">How we work</h2>
-  <div class="row3" id="how" style="margin-top:0;">
-    <div><h3>1 · Talk</h3><p>It starts with a free conversation. No pitch. Tell us what's slow, what's manual, what's missing. If it isn't worth fixing, we'll say so.</p></div>
-    <div><h3>2 · Discover</h3><p>If it is, we run a paid, fixed-scope discovery and hand you the plan: what to build, how, and what it'll cost. You paid for it, so you own it.</p></div>
-    <div><h3>3 · Build</h3><p>From there it's your call. Take the plan in-house and build it yourself, or we carry on and build it for you, proving it on your real data as we go.</p></div>
-    <div><h3>4 · Run</h3><p>Either path lands the same place: a system running in production, on your infrastructure or ours, documented and handed over.</p></div>
-  </div>
+  <ol class="row3" id="how" role="list" style="margin-top:0;">
+    <li><h3>1 · Talk</h3><p>It starts with a free conversation. No pitch. Tell us what's slow, what's manual, what's missing. If it isn't worth fixing, we'll say so.</p></li>
+    <li><h3>2 · Discover</h3><p>If it is, we run a paid, fixed-scope discovery and hand you the plan: what to build, how, and what it'll cost. You paid for it, so you own it.</p></li>
+    <li><h3>3 · Build</h3><p>From there it's your call. Take the plan in-house and build it yourself, or we carry on and build it for you, proving it on your real data as we go.</p></li>
+    <li><h3>4 · Run</h3><p>Either path lands the same place: a system running in production, on your infrastructure or ours, documented and handed over.</p></li>
+  </ol>
 </div></section>
 
 <section class="panel" style="padding-top:0;"><div class="wrap">
@@ -239,7 +282,7 @@
 
 <section class="panel" id="writing" style="padding-top:0;"><div class="wrap">
   <h2 class="tag">Writing</h2>
-  <a class="art" href="okf-operational-layer.html"><span>Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d">Jun 2026</span></a>
+  <a class="art" href="okf-operational-layer.html"><span>Beyond the Format: The Operational Layer OKF Leaves Out</span><span class="d"><time datetime="2026-06">Jun 2026</time></span></a>
   <p class="soon">More in progress.</p>
 </div></section>
 
