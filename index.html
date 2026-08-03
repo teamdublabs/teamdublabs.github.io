@@ -99,6 +99,13 @@
     letter-spacing:.14em;}
   .meta b{display:block;font-weight:400;opacity:.6;margin-bottom:3px;}
 
+  .bio{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s8);align-items:end;}
+  .headshot{margin:0;position:relative;align-self:start;width:fit-content;}
+  .headshot img{display:block;width:min(300px,30vw);height:auto;
+    border:3px solid var(--space-black);}
+  .headshot::after{content:"";position:absolute;inset:0;z-index:-1;
+    transform:translate(14px,14px);background:var(--safety-orange);}
+
   .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
     padding:var(--s5) 0;border-top:2px solid currentColor;text-decoration:none;
     font-family:var(--font-header);text-transform:uppercase;font-weight:700;
@@ -117,6 +124,8 @@
     .slab{grid-template-columns:minmax(0,1fr);gap:var(--s3);}
     .slab .n{opacity:.4;}
     .row3{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+    .bio{grid-template-columns:minmax(0,1fr);gap:var(--s7);}
+    .headshot img{width:min(260px,70vw);}
   }
 </style>
 </head>
@@ -207,12 +216,19 @@
 
 <div class="panel" style="padding-top:0;"><div class="wrap">
   <p class="tag">Who you're hiring</p>
-  <h2 class="mega" style="font-size:clamp(30px,6vw,72px);">We run it too</h2>
-  <p class="sub">Our own operations run on a hybrid stack: local inference where it matters, cloud where it makes sense, agent orchestration, an append-only audit trail. Production daily, not a demo. If we recommend it, we're already running it, and if you'd rather not run infrastructure yourself, yours can live on ours.</p>
-  <div class="meta">
-    <span><b>Principal</b>Wes · Founder</span>
-    <span><b>Entity</b>Team Dub Labs Ltd</span>
-    <span><b>Based</b>Regina, SK</span>
+  <div class="bio">
+    <div>
+      <h2 class="mega" style="font-size:clamp(30px,6vw,72px);">We run it too</h2>
+      <p class="sub">Our own operations run on a hybrid stack: local inference where it matters, cloud where it makes sense, agent orchestration, an append-only audit trail. Production daily, not a demo. If we recommend it, we're already running it, and if you'd rather not run infrastructure yourself, yours can live on ours.</p>
+      <div class="meta">
+        <span><b>Principal</b>Wes · Founder</span>
+        <span><b>Entity</b>Team Dub Labs Ltd</span>
+        <span><b>Based</b>Regina, SK</span>
+      </div>
+    </div>
+    <figure class="headshot">
+      <img src="assets/wes-headshot.jpg" alt="Wes, founder of Team Dub Labs" width="486" height="600" loading="lazy">
+    </figure>
   </div>
 </div></div>
 
