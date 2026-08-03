@@ -96,6 +96,15 @@ a { color: inherit; }
 .brand-name{font-family:var(--font-header);text-transform:uppercase;
   letter-spacing:.08em;font-weight:800;font-size:15px;white-space:nowrap;}
 
+/* Skip link — first focusable element on every page. Parked off
+   screen until keyboard focus brings it into view (WCAG 2.4.1). */
+.skip-link{position:absolute;left:var(--s4);top:-100px;z-index:100;
+  background:var(--space-black);color:var(--off-white);
+  font-family:var(--font-header);text-transform:uppercase;
+  letter-spacing:var(--track-header);font-weight:800;font-size:13px;
+  text-decoration:none;padding:12px 20px;}
+.skip-link:focus{top:var(--s4);}
+
 /* Section headers, nav, buttons, badges — the Archivo role. */
 .u-header {
   font-family: var(--font-header);

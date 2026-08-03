@@ -59,7 +59,7 @@
     text-decoration-thickness:2px;text-underline-offset:5px;}
 
   .panel{padding:var(--s10) 0;}
-  .panel:first-of-type{padding-top:var(--s7);}
+  main > .panel:first-child{padding-top:var(--s7);}
   .panel.orange{background:var(--safety-orange);color:var(--on-orange);}
   .panel.dark{background:var(--space-black);color:var(--off-white);}
 
@@ -130,19 +130,23 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <header><div class="wrap">
   <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-mark-new.png" alt=""><span class="brand-name">Team Dub Labs</span></a>
   <nav class="u-header"><a href="index.html#work">Work</a><a href="index.html#how">How</a><a href="index.html#writing">Writing</a><a href="training.html">Training</a><a href="index.html#contact">Contact</a></nav>
 </div></header>
 
-<div class="panel"><div class="wrap">
+<main id="main">
+
+<section class="panel"><div class="wrap">
   <p class="tag">AI Training</p>
   <h1 class="mega">Intro to<br>AI</h1>
   <p class="sub">A 2-hour, in-person session that gets your whole team thinking clearly about AI, on your actual work, not hypotheticals.</p>
   <a class="btn onLight" href="#dates">See dates &amp; book</a>
-</div></div>
+</div></section>
 
-<div class="panel orange"><div class="wrap">
+<section class="panel orange"><div class="wrap">
   <div class="slab">
     <span class="n">01</span>
     <div>
@@ -150,26 +154,26 @@
       <p>Regina and Southern Saskatchewan business owners and teams curious about AI but not sure where to start. No technical background needed, and nobody needs to bring a laptop.</p>
     </div>
   </div>
-</div></div>
+</div></section>
 
-<div class="panel"><div class="wrap">
+<section class="panel"><div class="wrap">
   <p class="tag">What's covered</p>
   <div class="agenda-row"><span class="t">0:00&ndash;0:15</span><p>What AI actually is right now, no hype: what it's good at, what it isn't, in plain terms for your business.</p></div>
   <div class="agenda-row"><span class="t">0:15&ndash;1:00</span><p>Live demos on real business tasks: drafting, summarizing, research, customer communication, basic automation. Presenter-led, no laptops or participation required.</p></div>
   <div class="agenda-row"><span class="t">1:00&ndash;1:20</span><p>Common pitfalls and privacy basics: what not to paste into a public AI tool, and when it matters.</p></div>
   <div class="agenda-row"><span class="t">1:20&ndash;1:50</span><p>Q&amp;A, the one interactive block.</p></div>
   <div class="agenda-row"><span class="t">1:50&ndash;2:00</span><p>Wrap-up and a take-home cheat sheet.</p></div>
-</div></div>
+</div></section>
 
-<div class="panel dark"><div class="wrap">
+<section class="panel dark"><div class="wrap">
   <p class="tag">The details</p>
   <div class="row3">
     <div><h4>Included, every session</h4><p>A written summary of what we covered and recommended for your business, plus a free 30-minute follow-up call to talk through next steps.</p></div>
     <div><h4>What we need from you</h4><p>A room and a screen or projector. Any team size, the room's the only limit.</p></div>
   </div>
-</div></div>
+</div></section>
 
-<div class="panel orange" id="dates"><div class="wrap">
+<section class="panel orange" id="dates"><div class="wrap">
   <p class="tag">Dates &amp; price</p>
   <h2 class="mega" style="font-size:clamp(32px,7vw,88px);">Book fast</h2>
   <p class="sub">Only two dates left this fall. First come, first served.</p>
@@ -178,14 +182,16 @@
     <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%2019%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request October 19</a>
   </div>
   <p class="sub" style="margin-top:var(--s7);">$1,500 flat. Your whole team, no per-head fees.</p>
-</div></div>
+</div></section>
 
-<div class="panel" style="padding-bottom:var(--s8);"><div class="wrap">
+<section class="panel" style="padding-bottom:var(--s8);"><div class="wrap">
   <p class="tag">Thinking bigger?</p>
   <h2 class="mega" style="font-size:clamp(32px,7vw,88px);">Go<br>further</h2>
   <p class="sub">If this sparks something bigger for your business, let's talk about what a full AI or automation engagement could look like.</p>
   <a class="btn onLight" href="index.html#contact">Talk to us</a>
-</div></div>
+</div></section>
+
+</main>
 
 <footer><div class="wrap"><span>© 2026 Team Dub Labs Ltd</span><span>Regina, SK</span></div></footer>
 </body>

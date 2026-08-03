@@ -27,7 +27,7 @@
     text-decoration-thickness:2px;text-underline-offset:5px;}
 
   .panel{padding:var(--s10) 0;}
-  .panel:first-of-type{padding-top:var(--s7);}
+  main > .panel:first-child{padding-top:var(--s7);}
   .panel.orange{background:var(--safety-orange);color:var(--on-orange);}
 
   .tag{font-family:var(--font-header);font-size:12px;text-transform:uppercase;
@@ -91,12 +91,16 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <header><div class="wrap">
   <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-mark-new.png" alt=""><span class="brand-name">Team Dub Labs</span></a>
   <nav class="u-header"><a href="index.html#work">Work</a><a href="index.html#how">How</a><a href="index.html#writing">Writing</a><a href="training.html">Training</a><a href="index.html#contact">Contact</a></nav>
 </div></header>
 
-<div class="panel"><div class="wrap prose">
+<main id="main">
+
+<article class="panel"><div class="wrap prose">
   <h1 class="headline">Beyond the Format: The Operational Layer OKF Leaves Out</h1>
   <p class="dek">The hard part of an AI knowledge base isn't writing it down: it's keeping it true.</p>
   <p class="byline">by Team Dub Labs · <a href="https://teamdub.com">teamdub.com</a></p>
@@ -155,9 +159,9 @@
     <li>Keep humans where humans are good (curating, asking, deciding), and machines where machines are good (the bookkeeping nobody sustains).</li>
   </ul>
   <p>OKF gave organizational knowledge a standard, portable body. The work worth doing, the work worth hiring for, is giving it a metabolism.</p>
-</div></div>
+</div></article>
 
-<div class="panel orange"><div class="wrap">
+<section class="panel orange"><div class="wrap">
   <p class="tag">About</p>
   <h2 class="mega">Let's build<br>the metabolism</h2>
   <p class="sub">Team Dub Labs builds the automation layer that keeps OKF knowledge bases alive: capture, classification, cross-linking, synthesis, and semantic maintenance, running unattended. Adopting OKF and want a system, not a snapshot?</p>
@@ -166,7 +170,9 @@
     <a class="btn outline" href="https://github.com/teamdublabs/okf-operational-layer" rel="noopener">Read on GitHub</a>
   </div>
   <p class="lic">Released under <a href="https://github.com/teamdublabs/okf-operational-layer/blob/main/LICENSE" rel="noopener">CC BY 4.0</a>. Discussion and issues welcome.</p>
-</div></div>
+</div></section>
+
+</main>
 
 <footer><div class="wrap"><span>© 2026 Team Dub Labs Ltd</span><span>Regina, SK · <a href="https://github.com/teamdublabs" rel="noopener" style="color:inherit;">github.com/teamdublabs</a></span></div></footer>
 </body>
