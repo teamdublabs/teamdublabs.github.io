@@ -22,7 +22,15 @@
      space-black on orange .......   5.53:1  AA
      orange     on off-white .....   2.89:1  FAILS at every size
      Hence: --on-orange is ALWAYS space-black, and orange text is
-     only ever permitted on a dark ground. */
+     only ever permitted on a dark ground.
+     Two corollaries (WCAG audit, 2026-08):
+     · No alpha-muted text on orange. rgba tints of space-black
+       stay under 4.5:1 until ~90% opacity, so text on orange is
+       always solid --on-orange; express hierarchy with size,
+       weight, or case instead of colour.
+     · Links/hovers on light grounds keep space-black text and
+       carry the orange as an underline only (decoration carries
+       no text-contrast requirement). */
   --on-orange:      var(--space-black);
   --accent-on-dark: var(--safety-orange);
 
