@@ -101,8 +101,11 @@
   .panel.orange{background:var(--safety-orange);color:var(--on-orange);}
   .panel.dark{background:var(--space-black);color:var(--off-white);}
 
+  /* Display scale: .mega is the page hero; .md steps it down for
+     section-scale headings. */
   .mega{font-family:var(--font-display);font-size:clamp(40px,9vw,120px);
     line-height:.92;letter-spacing:-.02em;margin:0;}
+  .mega.md{font-size:clamp(32px,7vw,88px);}
   .sub{font-size:clamp(18px,2.4vw,26px);max-width:24em;margin:var(--s6) 0 0;line-height:1.4;}
   .panel:not(.orange):not(.dark) .sub{color:#3a3a40;}
   .panel.orange .sub{color:var(--on-orange);}
@@ -121,7 +124,6 @@
   .btn:hover{transform:translateY(-2px);}
   .btn.onLight{background:var(--safety-orange);color:var(--on-orange);}
   .btn.onOrange{background:var(--space-black);color:var(--off-white);}
-  .btn.onDark{background:var(--safety-orange);color:var(--on-orange);}
 
   .slab{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s7);align-items:start;}
   .slab .n{font-family:var(--font-display);font-size:clamp(40px,7vw,92px);line-height:.9;opacity:.28;}
@@ -140,14 +142,19 @@
     text-transform:uppercase;letter-spacing:.06em;color:var(--muted-on-light);}
   .agenda-row p{margin:0;font-size:15.5px;color:#3a3a40;}
 
-  .row3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s7);margin-top:var(--s8);}
-  .row3 h3{font-family:var(--font-header);text-transform:uppercase;font-size:14px;
+  /* "The details" panel: two-column included / what-we-need grid. */
+  .details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s7);margin-top:var(--s8);}
+  .details h3{font-family:var(--font-header);text-transform:uppercase;font-size:14px;
     letter-spacing:var(--track-header);font-weight:800;margin:0 0 var(--s3);}
-  .row3 p{margin:0;font-size:16px;}
-  .panel.dark .row3 p{color:#c2c2c9;}
+  .details p{margin:0;font-size:16px;}
+  .panel.dark .details p{color:#c2c2c9;}
 
   .dateRow{display:flex;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s7);}
   .dateRow .btn{margin-top:0;}
+  .price-note{margin-top:var(--s7);}
+
+  /* Final panel sits closer to the footer. */
+  .panel.snug-bottom{padding-bottom:var(--s8);}
 
   .meta{display:flex;gap:var(--s7);flex-wrap:wrap;margin-top:var(--s7);
     font-family:var(--font-header);font-size:12px;text-transform:uppercase;
@@ -162,7 +169,7 @@
     .panel{padding:var(--s8) 0;}
     .slab{grid-template-columns:minmax(0,1fr);gap:var(--s3);}
     .slab .n{opacity:.4;}
-    .row3{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+    .details{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
     .agenda-row{grid-template-columns:minmax(0,1fr);gap:var(--s2);}
   }
 </style>
@@ -206,7 +213,7 @@
 
 <section class="panel dark"><div class="wrap">
   <h2 class="tag">The details</h2>
-  <div class="row3">
+  <div class="details">
     <div><h3>Included, every session</h3><p>A written summary of what we covered and recommended for your business, plus a free 30-minute follow-up call to talk through next steps.</p></div>
     <div><h3>What we need from you</h3><p>A room and a screen or projector. Any team size, the room's the only limit.</p></div>
   </div>
@@ -214,18 +221,18 @@
 
 <section class="panel orange" id="dates"><div class="wrap">
   <p class="tag">Dates &amp; price</p>
-  <h2 class="mega" style="font-size:clamp(32px,7vw,88px);">Book fast</h2>
+  <h2 class="mega md">Book fast</h2>
   <p class="sub">Only two dates left this fall. First come, first served.</p>
   <div class="dateRow">
     <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%205%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request <time datetime="2026-10-05">October 5</time></a>
     <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%2019%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request <time datetime="2026-10-19">October 19</time></a>
   </div>
-  <p class="sub" style="margin-top:var(--s7);">$1,500 flat. Your whole team, no per-head fees.</p>
+  <p class="sub price-note">$1,500 flat. Your whole team, no per-head fees.</p>
 </div></section>
 
-<section class="panel" style="padding-bottom:var(--s8);"><div class="wrap">
+<section class="panel snug-bottom"><div class="wrap">
   <p class="tag">Thinking bigger?</p>
-  <h2 class="mega" style="font-size:clamp(32px,7vw,88px);">Go<br>further</h2>
+  <h2 class="mega md">Go<br>further</h2>
   <p class="sub">If this sparks something bigger for your business, let's talk about what a full AI or automation engagement could look like.</p>
   <a class="btn onLight" href="index.html#contact">Talk to us</a>
 </div></section>

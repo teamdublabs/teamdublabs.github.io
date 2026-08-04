@@ -5,8 +5,9 @@
 /* ============================================================
    Team Dub Labs Ltd — shared brand tokens
    Source of truth: Brand Identity Guidelines
-   The ONLY file shared across prototypes. Everything else is
-   per-direction so the visual approaches stay independent.
+   The ONLY stylesheet shared across pages. Everything else lives
+   in each page's own inline <style>, deliberately, so pages stay
+   independent and can be edited without cross-page side effects.
    ============================================================ */
 
 :root {
@@ -45,8 +46,9 @@
   /* --- Type roles ---
      display:  Zen Dots. MAX 4 WORDS (guidelines rule).
      header:   Archivo. ALL CAPS, 0.05em tracking.
-               (Replaces Lemon Milk, which required a commercial
-                licence — see plan. Archivo is SIL OFL.)
+               (Replaces the guidelines' Lemon Milk, which required
+                a commercial licence. Archivo is SIL OFL — licence
+                texts in fonts/.)
      body:     Inter. */
   --font-display: 'Zen Dots', system-ui, sans-serif;
   --font-header:  'Archivo', system-ui, sans-serif;
