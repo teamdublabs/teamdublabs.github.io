@@ -1,7 +1,6 @@
-/* Self-hosted brand fonts — no third-party requests at runtime.
-   (Phase 2: promote this to a direct <link> in each page to drop
-   the extra serial round-trip @import costs.) */
-@import url('./fonts.css');
+/* Self-hosted brand fonts live in fonts.css, linked directly from
+   each page (before this file) — a @import here would cost an
+   extra serial round-trip before font discovery. */
 
 /* ============================================================
    Team Dub Labs Ltd — shared brand tokens
@@ -48,7 +47,7 @@
      header:   Archivo. ALL CAPS, 0.05em tracking.
                (Replaces Lemon Milk, which required a commercial
                 licence — see plan. Archivo is SIL OFL.)
-     body:     Inter or Space Grotesk, set per direction. */
+     body:     Inter. */
   --font-display: 'Zen Dots', system-ui, sans-serif;
   --font-header:  'Archivo', system-ui, sans-serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
@@ -64,8 +63,6 @@
      logo-horizontal.png ......... banner lockup, 1433x336
      logo-lockup-transparent.png . stacked lockup, 792x390
      logo-mark-new.png ........... square TD mark tile, 800x800
-     (logo-lockup.png / logo-mark.png are the old opaque files,
-      kept only so the round-1 pages stay exactly as reviewed.)
 
      USAGE RULE — Brand Identity Guidelines §4 Logo Usage:
      The banner (horizontal) lockup is DARK-BACKGROUND ONLY. Never
