@@ -3,3 +3,6 @@
 # Local editor/agent config — never publish
 .claude/
 CLAUDE.md
+
+# Local work-in-progress drafts — never publish
+_drafts/

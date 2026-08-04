@@ -22,11 +22,13 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "name": "Team Dub Labs LTD.",
   "url": "https://teamdub.com/",
   "description": "Team Dub Labs LTD. puts AI to work, automates the workflows that eat your week, and builds the software you can't buy off the shelf.",
   "logo": "https://teamdub.com/assets/logo-mark-new.png",
+  "image": "https://teamdub.com/assets/og-card.png",
+  "priceRange": "$$",
   "email": "contact@teamdublabs.com",
   "sameAs": ["https://github.com/teamdublabs"],
   "address": {
@@ -42,6 +44,34 @@
     "contactType": "sales"
   },
   "founder": { "@type": "Person", "name": "Wes" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is the first conversation really free?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. It's a working conversation, not a sales pitch: you tell us what's slow, manual, or missing, and we tell you honestly whether it's worth fixing. If it isn't, we'll say so, and you've lost nothing but half an hour. Book a call directly on our calendar, or email us."}},
+    {"@type": "Question", "name": "What does discovery cost?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Discovery starts at $2,500, as a fixed price quoted up front before you commit: no hourly meter, no surprises. It ends with a plan you own outright: what to build, how, and what it will cost."}},
+    {"@type": "Question", "name": "Can we take the plan and build it ourselves?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Absolutely: that's the point of paying for discovery. The plan is yours, so handing it to your own team or another shop is a perfectly good outcome. No hard feelings, no strings."}},
+    {"@type": "Question", "name": "How long does a project take?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Discovery typically runs two to three weeks. Builds vary too much to promise a number here and mean it, so your discovery plan includes a timeline for your specific project. Small automations can land in weeks; custom software takes longer."}},
+    {"@type": "Question", "name": "Who owns what we pay for?",
+     "acceptedAnswer": {"@type": "Answer", "text": "You do. The plan, the documentation, and everything built specifically for you is yours on final payment: no licence fees back to us, no lock-in. Where our own pre-built tooling is part of your system, you get a permanent licence to it, so you can run it, change it, or hand it to another developer without ever needing us again."}},
+    {"@type": "Question", "name": "What happens after handoff?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Every build lands documented and handed over, with a 30-day warranty: anything we got wrong, we fix free. Beyond that, ongoing support is available as a simple monthly arrangement if you want a safety net, and systems running on our infrastructure include monitoring and upkeep as part of the deal."}},
+    {"@type": "Question", "name": "You're one person. What if you're unavailable?",
+     "acceptedAnswer": {"@type": "Answer", "text": "That risk is designed for, not ignored. Everything is documented from day one so another developer could take over, we build on standard, boring technology rather than anything exotic, and nothing we ship needs us around to keep running."}},
+    {"@type": "Question", "name": "Is our data safe with AI?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Private by default. Your business data never goes into free consumer AI tools. When cloud AI is part of your build, we use commercial services with contractual no-training terms, and your plan names exactly what touches your data and where. And if nothing can leave your building, we build fully self-hosted AI: we run that stack ourselves, every day."}},
+    {"@type": "Question", "name": "Do you sign NDAs?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. If your project needs a confidentiality agreement before we talk specifics, send yours over, or we can provide one."}},
+    {"@type": "Question", "name": "Do you work outside Regina?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Anything in person, including training, we do anywhere in Saskatchewan. Project work mostly happens remotely anyway, so for AI, automation, and software builds we work with businesses across Canada."}}
+  ]
 }
 </script>
 <link rel="stylesheet" href="assets/fonts.css">
@@ -168,6 +198,18 @@
   .headshot::after{content:"";position:absolute;inset:0;z-index:-1;
     transform:translate(14px,14px);background:var(--safety-orange);}
 
+  /* FAQ: two-column question grid, mirrors training.html's .details. */
+  .faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:var(--s7);margin-top:var(--s4);}
+  .faq h3{font-family:var(--font-header);text-transform:uppercase;font-size:14px;
+    letter-spacing:var(--track-header);font-weight:800;margin:0 0 var(--s3);}
+  .faq p{margin:0;font-size:16px;color:#3a3a40;max-width:34em;}
+  /* Links on light grounds: black text, orange underline only. */
+  .faq a{color:inherit;text-decoration:underline;
+    text-decoration-color:var(--safety-orange);
+    text-decoration-thickness:1.5px;text-underline-offset:3px;}
+  .faq a:hover{text-decoration-thickness:3px;}
+
   .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
     padding:var(--s5) 0;border-top:2px solid currentColor;text-decoration:none;
     font-family:var(--font-header);text-transform:uppercase;font-weight:700;
@@ -193,6 +235,7 @@
     .slab{grid-template-columns:minmax(0,1fr);gap:var(--s3);}
     .slab .n{opacity:.4;}
     .steps{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+    .faq{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
     .bio{grid-template-columns:minmax(0,1fr);gap:var(--s7);}
     .headshot img{width:min(260px,70vw);}
   }
@@ -338,10 +381,27 @@
   <p class="soon">More in progress.</p>
 </div></section>
 
+<section class="panel flush-top" id="faq"><div class="wrap">
+  <h2 class="tag">Common questions</h2>
+  <div class="faq">
+    <div><h3>Is the first conversation really free?</h3><p>Yes. It's a working conversation, not a sales pitch: you tell us what's slow, manual, or missing, and we tell you honestly whether it's worth fixing. If it isn't, we'll say so, and you've lost nothing but half an hour. <a href="https://calendar.app.google/XLw5eXsAsn4tFsrE9" rel="noopener">Book a call directly</a>, or email us below.</p></div>
+    <div><h3>What does discovery cost?</h3><p>Discovery starts at $2,500, as a fixed price quoted up front before you commit: no hourly meter, no surprises. It ends with a plan you own outright: what to build, how, and what it will cost.</p></div>
+    <div><h3>Can we take the plan and build it ourselves?</h3><p>Absolutely: that's the point of paying for discovery. The plan is yours, so handing it to your own team or another shop is a perfectly good outcome. No hard feelings, no strings.</p></div>
+    <div><h3>How long does a project take?</h3><p>Discovery typically runs two to three weeks. Builds vary too much to promise a number here and mean it, so your discovery plan includes a timeline for your specific project. Small automations can land in weeks; custom software takes longer.</p></div>
+    <div><h3>Who owns what we pay for?</h3><p>You do. The plan, the documentation, and everything built specifically for you is yours on final payment: no licence fees back to us, no lock-in. Where our own pre-built tooling is part of your system, you get a permanent licence to it, so you can run it, change it, or hand it to another developer without ever needing us again.</p></div>
+    <div><h3>What happens after handoff?</h3><p>Every build lands documented and handed over, with a 30-day warranty: anything we got wrong, we fix free. Beyond that, ongoing support is available as a simple monthly arrangement if you want a safety net, and systems running on our infrastructure include monitoring and upkeep as part of the deal.</p></div>
+    <div><h3>You're one person. What if you're unavailable?</h3><p>That risk is designed for, not ignored. Everything is documented from day one so another developer could take over, we build on standard, boring technology rather than anything exotic, and nothing we ship needs us around to keep running.</p></div>
+    <div><h3>Is our data safe with AI?</h3><p>Private by default. Your business data never goes into free consumer AI tools. When cloud AI is part of your build, we use commercial services with contractual no-training terms, and your plan names exactly what touches your data and where. And if nothing can leave your building, we build fully self-hosted AI: we run that stack ourselves, every day.</p></div>
+    <div><h3>Do you sign NDAs?</h3><p>Yes. If your project needs a confidentiality agreement before we talk specifics, send yours over, or we can provide one.</p></div>
+    <div><h3>Do you work outside Regina?</h3><p>Yes. Anything in person, including training, we do anywhere in Saskatchewan. Project work mostly happens remotely anyway, so for AI, automation, and software builds we work with businesses across Canada.</p></div>
+  </div>
+</div></section>
+
 <section class="panel orange" id="contact"><div class="wrap">
   <h2 class="mega md">Let's talk</h2>
   <p class="sub">Tell us what's slow, what's manual, or what you wish existed. The first conversation costs nothing.</p>
   <div class="contactRow">
+    <a class="btn onOrange" href="https://calendar.app.google/XLw5eXsAsn4tFsrE9" rel="noopener">Book a free call</a>
     <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=Project%20enquiry">contact@teamdublabs.com</a>
     <button class="copyBtn" type="button" hidden aria-live="polite" title="Copy email address">
       <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
