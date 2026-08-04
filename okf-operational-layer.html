@@ -151,14 +151,14 @@
   <hr>
 
   <h2>A format is a snapshot. Knowledge is a process.</h2>
-  <p>In June 2026, Google Cloud published the <strong>Open Knowledge Format (OKF)</strong>: a small, open, vendor-neutral spec (Apache-2.0, no runtime, no SDK) for writing organizational knowledge as plain Markdown with light YAML frontmatter, readable directly by AI agents. It formalizes a pattern already taking shape: Andrej Karpathy's "LLM wiki" idea, built out by a small community through spring 2026, now with a name and a contract.</p>
+  <p>In June 2026, Google Cloud <a href="https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing" rel="noopener">published</a> the <strong>Open Knowledge Format (OKF)</strong>: a small, open, vendor-neutral <a href="https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf" rel="noopener">spec</a> (<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener">Apache-2.0</a>, no runtime, no SDK) for writing organizational knowledge as plain Markdown with light YAML frontmatter, readable directly by AI agents. It formalizes a pattern already taking shape: Andrej Karpathy's <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" rel="noopener">"LLM wiki" idea</a>, built out by a small community through spring 2026, now with a name and a contract.</p>
   <p>Every "just put your knowledge in OKF" walkthrough quietly assumes writing it down is the hard part. It isn't: the hard part is everything <em>after</em> the first commit.</p>
   <p>The day you finish authoring your OKF bundle, it starts to rot. A price changes, a runbook goes stale, a decision contradicts an old one, and nobody updates the file. Weeks later, your knowledge base is confidently feeding your agents things that are no longer true.</p>
   <p>OKF gives your knowledge a <strong>body</strong>. This piece is about what it leaves out: the <strong>metabolism</strong>.</p>
 
   <h2>What OKF is and isn't</h2>
   <p>The gap is by design, so it's worth being precise.</p>
-  <p>OKF specifies a <em>format</em>: a directory of Markdown concept files, one required frontmatter field (<code>type</code>), a few optional ones (<code>title</code>, <code>description</code>, <code>resource</code>, <code>tags</code>, <code>timestamp</code>), two reserved files (<code>index.md</code>, <code>log.md</code>), and plain Markdown links wiring it into a graph. That's it: minimal by design, easy to adopt, impossible to get locked into.</p>
+  <p>OKF specifies a <a href="https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/README.md" rel="noopener"><em>format</em></a>: a directory of Markdown concept files, one required frontmatter field (<code>type</code>), a few optional ones (<code>title</code>, <code>description</code>, <code>resource</code>, <code>tags</code>, <code>timestamp</code>), two reserved files (<code>index.md</code>, <code>log.md</code>), and plain Markdown links wiring it into a graph. That's it: minimal by design, easy to adopt, impossible to get locked into.</p>
   <p>But a format can't tell you:</p>
   <ul>
     <li>How new knowledge <strong>gets in</strong>.</li>
@@ -185,12 +185,12 @@
 
   <h2>Why "just export to OKF" isn't enough</h2>
   <p>The tempting shortcut is to treat OKF as a finish line: run a script, dump your docs into compliant files, declare victory. That gets you a <em>snapshot</em>, and snapshots rot.</p>
-  <p>It's also a different bet than retrieval-augmented generation (RAG), which rediscovers everything on every query, from scratch, with no memory of reasoning about it before. Different, not opposed: retrieval still earns its keep on corpora too big or too fresh to compile, and the two pair well in practice. But for the knowledge a business leans on every day, the LLM-wiki bet OKF encodes is the opposite trade: <strong>compile once, compound forever.</strong> Cross-references already there, contradictions already flagged, synthesis already done while you slept.</p>
+  <p>It's also a different bet than <a href="https://arxiv.org/abs/2005.11401" rel="noopener">retrieval-augmented generation (RAG)</a>, which rediscovers everything on every query, from scratch, with no memory of reasoning about it before. Different, not opposed: retrieval still earns its keep on corpora too big or too fresh to compile, and the two pair well in practice. But for the knowledge a business leans on every day, the LLM-wiki bet OKF encodes is the opposite trade: <strong>compile once, compound forever.</strong> Cross-references already there, contradictions already flagged, synthesis already done while you slept.</p>
   <p>That only pays off if something is doing the compiling, <em>continuously</em>. A static OKF bundle has the body of a compounding knowledge base and none of the metabolism: identical on day one, drifting from reality every day after.</p>
   <p>The format is necessary. It's nowhere near sufficient.</p>
 
   <h2>Standing on shoulders (and saying so)</h2>
-  <p>None of these primitives are mine. Karpathy articulated the LLM-wiki concept; a community worked out the conventions (index files, append-only logs, source/concept separation, citation discipline, review gates) months before any of it carried a Google logo. OKF turned those conventions into a portable, vendor-neutral contract.</p>
+  <p>None of these primitives are mine. Karpathy <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" rel="noopener">articulated the LLM-wiki concept</a>; a community worked out the conventions (index files, append-only logs, source/concept separation, citation discipline, review gates) months before any of it carried a Google logo. OKF turned those conventions into a portable, vendor-neutral contract.</p>
   <p>Our claim is narrower: we've been running the full operational layer, scheduled and unattended, since before the standard existed. Building the format is a weekend's work; building the metabolism, trusting it to rewrite your knowledge while you sleep, takes real engineering. That's the part most OKF adoption stories skip, and the part that decides whether your agents work from the truth.</p>
 
   <h2>The takeaway</h2>
