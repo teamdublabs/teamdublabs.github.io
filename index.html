@@ -210,6 +210,16 @@
     text-decoration-thickness:1.5px;text-underline-offset:3px;}
   .faq a:hover{text-decoration-thickness:3px;}
 
+  /* Testimonials: two verbatim quotes, orange rule, top-aligned. */
+  .quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:var(--s7);margin-top:var(--s4);align-items:start;}
+  .quote{margin:0;border-left:3px solid var(--safety-orange);padding-left:var(--s5);}
+  .quote blockquote{margin:0;}
+  .quote blockquote p{margin:0;font-size:17px;color:#3a3a40;max-width:34em;}
+  .quote figcaption{margin-top:var(--s4);font-family:var(--font-header);
+    font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;}
+  .quote figcaption span{font-weight:400;color:var(--muted-on-light);}
+
   .art{display:flex;justify-content:space-between;gap:var(--s5);align-items:baseline;
     padding:var(--s5) 0;border-top:2px solid currentColor;text-decoration:none;
     font-family:var(--font-header);text-transform:uppercase;font-weight:700;
@@ -236,6 +246,7 @@
     .slab .n{opacity:.4;}
     .steps{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
     .faq{grid-template-columns:minmax(0,1fr);gap:var(--s5);}
+    .quotes{grid-template-columns:minmax(0,1fr);gap:var(--s6);}
     .bio{grid-template-columns:minmax(0,1fr);gap:var(--s7);}
     .headshot img{width:min(260px,70vw);}
   }
@@ -371,6 +382,24 @@
     </div>
     <figure class="headshot">
       <img src="assets/wes-headshot.jpg" alt="Wes, founder of Team Dub Labs" width="486" height="600" loading="lazy">
+    </figure>
+  </div>
+</div></section>
+
+<section class="panel flush-top" id="said"><div class="wrap">
+  <h2 class="tag">What people say</h2>
+  <div class="quotes">
+    <figure class="quote">
+      <blockquote>
+        <p>Running a mid-sized team in the industry I've sat through enough vendor AI pitches to be cynical about it. This wasn't one of those. Wes doesn't oversell. I came in expecting to be told AI was the answer and instead got a straight breakdown of which part actually benefit from AI and which part just needed two systems talking to each other. Getting told what not to build is worth more than most engagements.</p>
+      </blockquote>
+      <figcaption>Adam <span>· Manager at a multinational org</span></figcaption>
+    </figure>
+    <figure class="quote">
+      <blockquote>
+        <p>So this is also your fault. Thanks for helping me learn.</p>
+      </blockquote>
+      <figcaption>Julian <span>· after sending over a legal document and a link to a web application he made himself with AI</span></figcaption>
     </figure>
   </div>
 </div></section>
