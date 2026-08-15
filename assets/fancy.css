@@ -1,0 +1,133 @@
+/* ============================================================
+   Team Dub Labs LTD. — presentation layer ("fancy")
+   Experimental layer added on branch bionic/fancy.
+
+   · Every rule is gated behind `html.fx`, a class that
+     assets/fancy.js adds on load. With JS disabled, or with
+     fancy.js unfetched, this file changes nothing and the site
+     renders exactly as before.
+   · Presentation only: no content, no layout, no copy, no new
+     hues. All colours come from tokens.css.
+   · Motion: CSS animations are neutralised for
+     prefers-reduced-motion by tokens.css; fancy.js additionally
+     skips its JS-driven effects (particles, cursor, parallax,
+     glitch, reveals) for reduced-motion users.
+   · Decorative nodes (canvas, grain, sweep, cursor) are created
+     by fancy.js with aria-hidden.
+   ============================================================ */
+
+/* --- Top hazard strip: thin, slow, brand colours only --- */
+html.fx::before{
+  content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:80;
+  background:repeating-linear-gradient(45deg,
+    var(--safety-orange) 0 14px, var(--space-black) 14px 28px);
+  background-size:200% 100%;
+  animation:fx-hazard 48s linear infinite;
+}
+@keyframes fx-hazard{to{background-position:39.6px 0;}}
+
+/* --- Scan sweep: one hairline pass down the page, then a rest --- */
+.fx-sweep{
+  position:fixed;left:0;right:0;top:-2px;height:2px;z-index:58;
+  pointer-events:none;opacity:.5;
+  background:linear-gradient(90deg,transparent,rgba(255,95,21,.65),transparent);
+  animation:fx-sweep 9s linear infinite;
+}
+@keyframes fx-sweep{
+  0%  {top:-2px;opacity:0;}
+  6%  {opacity:.5;}
+  60% {top:102vh;opacity:.5;}
+  66% {top:102vh;opacity:0;}
+  100%{top:102vh;opacity:0;}
+}
+
+/* --- Film grain over everything, below the hazard strip --- */
+.fx-grain{
+  position:fixed;inset:0;z-index:59;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Dust: canvas sits behind content, above the body ground, so
+     it reads on Off-White panels and is covered by Orange/Dark --- */
+#fx-dust{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+
+/* --- Cursor: soft orange wash + ring, fine pointers only --- */
+#fx-orb{
+  position:fixed;top:0;left:0;width:300px;height:300px;z-index:57;
+  pointer-events:none;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,95,21,.09),transparent 65%);
+}
+#fx-ring{
+  position:fixed;top:0;left:0;width:26px;height:26px;z-index:70;
+  pointer-events:none;border:1.5px solid var(--safety-orange);border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition:width .18s ease,height .18s ease,opacity .3s ease;
+}
+#fx-ring::after{
+  content:"";position:absolute;top:50%;left:50%;width:3px;height:3px;
+  background:var(--safety-orange);border-radius:50%;transform:translate(-50%,-50%);
+}
+#fx-ring.hot{width:44px;height:44px;}
+#fx-ring.idle{opacity:0;}
+
+/* --- Scroll reveal (JS adds .fxr/.fx-in, then removes both so the
+     element's original transitions come back) --- */
+html.fx .fxr{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--fxd,0s);
+}
+html.fx .fxr.fx-in{opacity:1;transform:none;}
+html.fx .fxr.fx-hero{
+  opacity:0;transform:translateY(42px);
+  clip-path:inset(0 0 16% 0);
+  transition:opacity .85s ease,transform .85s cubic-bezier(.16,.8,.24,1),
+             clip-path .85s cubic-bezier(.16,.8,.24,1);
+  transition-delay:var(--fxd,0s);
+}
+html.fx .fxr.fx-hero.fx-in{opacity:1;transform:none;clip-path:inset(0 0 0% 0);}
+
+/* --- Occasional glitch on the hero display type (JS toggles) --- */
+html.fx .fx-glitch{animation:fx-glitch .22s steps(2,end) both;}
+@keyframes fx-glitch{
+  0%  {clip-path:inset(0 0 0 0);transform:translate(0,0);}
+  20% {clip-path:inset(12% 0 55% 0);transform:translate(-3px,1px);}
+  40% {clip-path:inset(55% 0 8% 0);transform:translate(3px,-1px);}
+  60% {clip-path:inset(30% 0 32% 0);transform:translate(-2px,0);}
+  80% {clip-path:inset(70% 0 4% 0);transform:translate(2px,1px);}
+  100%{clip-path:inset(0 0 0 0);transform:none;}
+}
+
+/* --- Hover micro-moves (decorative only) --- */
+/* Writing rows: orange rule sweeps in along the existing border. */
+html.fx .art{position:relative;}
+html.fx .art::before{
+  content:"";position:absolute;top:-2px;left:0;right:0;height:2px;
+  background:var(--safety-orange);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1);
+}
+html.fx .art:hover::before,html.fx .art:focus-visible::before{transform:scaleX(1);}
+
+/* Buttons: a light sheen passes across on hover. */
+html.fx .btn{position:relative;overflow:hidden;}
+html.fx .btn::after{
+  content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;
+  background:linear-gradient(105deg,transparent,rgba(250,249,246,.3),transparent);
+  transform:skewX(-18deg);
+  transition:left .55s ease;
+}
+html.fx .btn:hover::after,html.fx .btn:focus-visible::after{left:130%;}
+
+/* Service slabs: the giant ghost number warms to orange on hover. */
+html.fx .slab .n{transition:color .45s ease,opacity .45s ease;}
+html.fx .slab:hover .n{color:var(--safety-orange);opacity:.55;}
+
+/* Dark panel: a faint orange depth glow from the edges. z-index:-1
+   inside the panel's own stacking context keeps it above the panel
+   ground and below the panel's content. */
+html.fx .panel.dark{position:relative;z-index:0;}
+html.fx .panel.dark::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  box-shadow:inset 0 0 140px rgba(255,95,21,.08);
+}
