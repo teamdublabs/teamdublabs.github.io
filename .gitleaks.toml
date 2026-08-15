@@ -1,0 +1,11 @@
+# Repo-level gitleaks config (used by the global pre-commit hook).
+# Everything else keeps the default rule set.
+
+title = "teamdublabs.github.io gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Cloudflare Web Analytics beacon token: public by design, embedded in every published page (see CLAUDE.md page conventions)"
+regexes = ['5b6a5ecfde2c47e287e191eb7d5943e3']
