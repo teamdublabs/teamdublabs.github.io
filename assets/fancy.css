@@ -118,6 +118,11 @@ html.fx .btn:hover::after,html.fx .btn:focus-visible::after{left:130%;}
 /* Service slabs: the giant ghost number warms to orange on hover. */
 html.fx .slab .n{transition:color .45s ease,opacity .45s ease;}
 html.fx .slab:hover .n{color:var(--safety-orange);opacity:.55;}
+/* Slabs on the orange panel ("01 · AI Implementation"): an
+   orange-on-orange number would vanish, so it warms to space-black
+   instead. Higher specificity than the rule above, scoped to keep
+   the orange hover on light and dark panels. */
+html.fx .panel.orange .slab:hover .n{color:var(--space-black);}
 
 /* Dark panel: a faint orange depth glow from the edges. z-index:-1
    inside the panel's own stacking context keeps it above the panel
