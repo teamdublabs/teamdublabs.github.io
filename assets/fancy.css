@@ -16,15 +16,11 @@
      by fancy.js with aria-hidden.
    ============================================================ */
 
-/* --- Top hazard strip: thin, slow, brand colours only --- */
+/* --- Top strip: thin solid safety-orange accent --- */
 html.fx::before{
   content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:80;
-  background:repeating-linear-gradient(45deg,
-    var(--safety-orange) 0 14px, var(--space-black) 14px 28px);
-  background-size:200% 100%;
-  animation:fx-hazard 48s linear infinite;
+  background:var(--safety-orange);
 }
-@keyframes fx-hazard{to{background-position:39.6px 0;}}
 
 /* --- Scan sweep: one hairline pass down the page, then a rest --- */
 .fx-sweep{
