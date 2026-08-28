@@ -12,7 +12,7 @@
      prefers-reduced-motion by tokens.css; fancy.js additionally
      skips its JS-driven effects (particles, cursor, parallax,
      glitch, reveals) for reduced-motion users.
-   · Decorative nodes (canvas, grain, sweep, cursor) are created
+   · Decorative nodes (canvas, grain, cursor) are created
      by fancy.js with aria-hidden.
    ============================================================ */
 
@@ -20,21 +20,6 @@
 html.fx::before{
   content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:80;
   background:var(--safety-orange);
-}
-
-/* --- Scan sweep: one hairline pass down the page, then a rest --- */
-.fx-sweep{
-  position:fixed;left:0;right:0;top:-2px;height:2px;z-index:58;
-  pointer-events:none;opacity:.5;
-  background:linear-gradient(90deg,transparent,rgba(255,95,21,.65),transparent);
-  animation:fx-sweep 9s linear infinite;
-}
-@keyframes fx-sweep{
-  0%  {top:-2px;opacity:0;}
-  6%  {opacity:.5;}
-  60% {top:102vh;opacity:.5;}
-  66% {top:102vh;opacity:0;}
-  100%{top:102vh;opacity:0;}
 }
 
 /* --- Film grain over everything, below the hazard strip --- */

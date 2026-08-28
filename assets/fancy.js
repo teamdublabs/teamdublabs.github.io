@@ -1,7 +1,7 @@
 /* ============================================================
    Team Dub Labs LTD. — presentation layer ("fancy")
    Companion to assets/fancy.css. Adds the `fx` class to <html>,
-   builds the decorative nodes (dust canvas, grain, sweep,
+   builds the decorative nodes (dust canvas, grain,
    cursor), and drives reveals, parallax, and the occasional
    hero glitch.
 
@@ -112,11 +112,6 @@
     grain.className = 'fx-grain';
     grain.setAttribute('aria-hidden', 'true');
     doc.body.appendChild(grain);
-
-    var sweep = doc.createElement('div');
-    sweep.className = 'fx-sweep';
-    sweep.setAttribute('aria-hidden', 'true');
-    doc.body.appendChild(sweep);
 
     canvas = doc.createElement('canvas');
     canvas.id = 'fx-dust';
