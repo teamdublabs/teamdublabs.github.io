@@ -1,0 +1,12 @@
+{
+  "recurse": true,
+  "verbosity": "error",
+  "skip": [
+    "^mailto:",
+    "^tel:",
+    "calendar\\.app\\.google",
+    "static\\.cloudflareinsights\\.com",
+    "^https://teamdub\\.com",
+    "^https://openai\\.com/"
+  ]
+}
