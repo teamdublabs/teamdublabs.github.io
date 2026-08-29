@@ -34,6 +34,9 @@ jobs:
       - name: OG metadata
         run: python3 tools/check-og.py
 
+      - name: Cloudflare Web Analytics
+        run: python3 tools/check-cf-analytics.py
+
       - name: Serve static files
         run: python3 -m http.server 4317 --bind 127.0.0.1 &
 

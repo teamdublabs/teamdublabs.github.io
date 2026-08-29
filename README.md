@@ -53,16 +53,17 @@ is what is on the site.
 
 ## Validation
 
-`.github/workflows/lint.yml` runs five checks and nothing else: html-validate,
-linkinator, sitemap completeness, JSON-LD parse, and OG metadata. No build,
-no deploy. Config lives in `.htmlvalidate.json` and `.linkinatorrc` so
-existing page copy stays untouched.
+`.github/workflows/lint.yml` runs six checks and nothing else: html-validate,
+linkinator, sitemap completeness, JSON-LD parse, OG metadata, and Cloudflare
+Web Analytics. No build, no deploy. Config lives in `.htmlvalidate.json` and
+`.linkinatorrc` so existing page copy stays untouched.
 
 ```bash
 npx html-validate '*.html'
 python3 tools/check-sitemap.py
 python3 tools/check-jsonld.py
 python3 tools/check-og.py
+python3 tools/check-cf-analytics.py
 python3 -m http.server 4317
 npx linkinator http://localhost:4317 --config .linkinatorrc
 ```
