@@ -1,12 +1,22 @@
 {
   "recurse": true,
   "verbosity": "error",
+  "retry": true,
+  "retryErrors": true,
+  "retryErrorsCount": 3,
+  "retryErrorsJitter": 2000,
   "skip": [
     "^mailto:",
     "^tel:",
     "calendar\\.app\\.google",
     "static\\.cloudflareinsights\\.com",
     "^https://teamdub\\.com",
-    "^https://openai\\.com/"
+    "^https://openai\\.com/",
+    "www\\.youtube\\.com",
+    "youtu\\.be",
+    "strategylab\\.ca",
+    "support\\.google\\.com",
+    "privacy\\.claude\\.com",
+    "cloud\\.google\\.com/blog"
   ]
 }
