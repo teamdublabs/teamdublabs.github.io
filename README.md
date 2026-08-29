@@ -1,8 +1,7 @@
 # teamdub.com
 
-Public site for **Team Dub Labs LTD.**, an AI, automation, and custom software
-consultancy in Regina, SK. Static multi-page site hosted on **GitHub Pages**
-at [teamdub.com](https://teamdub.com).
+Team Dub Labs does AI, automation, and custom software in Regina, SK.
+Static multi-page site hosted on **GitHub Pages** at [teamdub.com](https://teamdub.com).
 
 ## Pages
 
