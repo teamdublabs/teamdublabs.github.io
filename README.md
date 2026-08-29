@@ -12,7 +12,8 @@ Static multi-page site hosted on **GitHub Pages** at [teamdub.com](https://teamd
 | `okf-operational-layer.html` | Long-form article on the OKF operational layer |
 | `404.html` | Not-found page (served automatically by GitHub Pages) |
 
-There is no build step, no framework, and no CI. Each page carries its own
+There is no build step and no framework. GitHub Actions runs lint-only
+checks on pull requests and on push to `main`. Each page carries its own
 inline `<style>` on purpose, so pages stay independent; the only shared CSS
 is `assets/tokens.css` (brand tokens, reset, header pattern) and
 `assets/fonts.css` (self-hosted font faces).
@@ -52,14 +53,18 @@ is what is on the site.
 
 ## Validation
 
-No automated checks yet; before pushing, these are useful:
+`.github/workflows/lint.yml` runs five checks and nothing else: html-validate,
+linkinator, sitemap completeness, JSON-LD parse, and OG metadata. No build,
+no deploy. Config lives in `.htmlvalidate.json` and `.linkinatorrc` so
+existing page copy stays untouched.
 
 ```bash
-npx html-validate index.html training.html okf-operational-layer.html 404.html
-```
-
-```bash
-npx linkinator http://localhost:4317 --recurse
+npx html-validate '*.html'
+python3 tools/check-sitemap.py
+python3 tools/check-jsonld.py
+python3 tools/check-og.py
+python3 -m http.server 4317
+npx linkinator http://localhost:4317 --config .linkinatorrc
 ```
 
 ## Fonts

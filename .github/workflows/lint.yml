@@ -1,0 +1,52 @@
+name: lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: html-validate
+        run: npx --yes html-validate@11 '*.html'
+
+      - name: sitemap completeness
+        run: python3 tools/check-sitemap.py
+
+      - name: JSON-LD
+        run: python3 tools/check-jsonld.py
+
+      - name: OG metadata
+        run: python3 tools/check-og.py
+
+      - name: Serve static files
+        run: python3 -m http.server 4317 --bind 127.0.0.1 &
+
+      - name: Wait for static server
+        run: |
+          for i in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:4317/ >/dev/null; then
+              exit 0
+            fi
+            sleep 0.25
+          done
+          echo "static server did not start"
+          exit 1
+
+      - name: linkinator
+        run: npx --yes linkinator@8 http://127.0.0.1:4317 --config .linkinatorrc

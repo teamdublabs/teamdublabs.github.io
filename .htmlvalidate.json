@@ -1,0 +1,9 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "attr-quotes": "off",
+    "tel-non-breaking": "off",
+    "prefer-native-element": "off",
+    "no-redundant-role": "off"
+  }
+}
