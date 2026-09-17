@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Intro to AI Training · Team Dub Labs</title>
-<meta name="description" content="A 2-hour, in-person Intro to AI session for your team. Plain-language, live demos, real business tasks. Regina & Southern SK, two dates this fall.">
+<meta name="description" content="A 2-hour, in-person Intro to AI session for your team. Plain-language, live demos, real business tasks. Regina & Southern SK, one date this fall.">
 <meta property="og:title" content="Intro to AI Training · Team Dub Labs">
-<meta property="og:description" content="A 2-hour, in-person Intro to AI session for your team. Regina & Southern SK, two dates this fall, book fast.">
+<meta property="og:description" content="A 2-hour, in-person Intro to AI session for your team. Regina & Southern SK, one date this fall, book fast.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://teamdub.com/training.html">
 <meta property="og:image" content="https://teamdub.com/assets/og-card.png">
@@ -40,21 +40,6 @@
     "availability": "https://schema.org/LimitedAvailability"
   },
   "hasCourseInstance": [
-    {
-      "@type": "CourseInstance",
-      "courseMode": "onsite",
-      "startDate": "2026-10-05",
-      "duration": "PT2H",
-      "location": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Regina",
-          "addressRegion": "SK",
-          "addressCountry": "CA"
-        }
-      }
-    },
     {
       "@type": "CourseInstance",
       "courseMode": "onsite",
@@ -149,8 +134,15 @@
   .details p{margin:0;font-size:16px;}
   .panel.dark .details p{color:#c2c2c9;}
 
-  .dateRow{display:flex;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s7);}
+  .dateRow{display:flex;gap:var(--s5);flex-wrap:wrap;align-items:center;margin-top:var(--s7);}
   .dateRow .btn{margin-top:0;}
+  .dateFilled{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;
+    font-family:var(--font-header);text-transform:uppercase;
+    letter-spacing:var(--track-header);font-weight:800;font-size:14px;
+    padding:16px 34px;border:2px solid var(--on-orange);color:var(--on-orange);
+    max-width:100%;overflow-wrap:anywhere;}
+  .dateFilled .badge{display:inline-block;padding:4px 10px;
+    background:var(--on-orange);color:var(--safety-orange);}
   .price-note{margin-top:var(--s7);}
 
   /* Final panel sits closer to the footer. */
@@ -226,9 +218,9 @@
 <section class="panel orange" id="dates"><div class="wrap">
   <p class="tag">Dates &amp; price</p>
   <h2 class="mega md">Book fast</h2>
-  <p class="sub">Only two dates left this fall. First come, first served.</p>
+  <p class="sub">Only one date left this fall. First come, first served.</p>
   <div class="dateRow">
-    <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%205%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request <time datetime="2026-10-05">October 5</time></a>
+    <span class="dateFilled"><time datetime="2026-10-05">October 5</time> <span class="badge">Date filled</span></span>
     <a class="btn onOrange" href="mailto:contact@teamdublabs.com?subject=AI%20Training%20Booking%20Request%3A%20October%2019%2C%202026&amp;body=Company%20name%3A%0ATeam%20size%3A%0A">Request <time datetime="2026-10-19">October 19</time></a>
   </div>
   <p class="sub price-note">$1,500 plus tax. Your whole team, no per-head fees.</p>
